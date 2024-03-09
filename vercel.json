@@ -1,4 +1,14 @@
 {
+  "version": 2,
+  "public": false,
+  "builds": [
+    { "src": "package.json", "use": "@vercel/static-build" },
+    { "src": "/api/server.js", "use": "@vercel/node" }
+  ],
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/server.js" },
+    { "source": "(.*)", "destination": "/index.html" }
+  ],
   "headers": [
     {
       "source": "/api/(.*)",
