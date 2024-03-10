@@ -1,0 +1,58 @@
+PAGES
+-- Public
+[] - Home page
+[] - Blog page
+[] - Details Page (for blogs only)
+[] - About us page
+[] - Login page
+[] - Register page
+
+-- Private
+[] - My Journal Page
+[] - Create Page
+[] - Details Page (both for blogs and for journals)
+[] - Edit Page
+[] - Delete Page
+[] - Logout Page
+
+FUNCTIONALITY
+[] - add who wrote the blog to the blog posts
+[] - show the author only on the blog page
+[] - delete journal entry
+[] - show message on successful delete
+[] - forms validation
+[] - jest tests
+[] - on create of a blog direct me to the blog page otherwise to journal page
+[x] - deploy on Vercel
+[] - make the deployment work with the service - check env variables route to service when in production
+
+
+CONTENT
+[] - Home page
+[] - Blog page - if there are no blog posts
+[] - About us page
+[] - Login page
+[] - Register page
+[] - My Journal Page
+[] - Create Page
+[] - Details Page
+[] - Edit Page
+[] - Delete Page
+[] - Logout Page
+
+STYLING
+
+[] - Home page
+[] - Blog page
+[] - About us page
+[] - Login page
+[] - Register page
+[] - My Journal Page
+[] - Create Page
+    [] - remove outline on the input fuilds for title, category and name
+[] - Details Page
+    [] backgorund for the hero
+    [] text going out from the designated area - need word break
+[] - Edit Page
+[] - Delete Page
+[] - Logout Page
