@@ -9,12 +9,27 @@
         class="w-16 md:w-24"
       />
     </a>
-    <div class="flex items-center gap-4">
+    <nav class="hidden lg:flex items-center gap-4">
       <a href="/">Home</a>
       <a href="/blog">Blog</a>
+      <a href="/my-journal" *ngIf="isLogged">My Journal</a>
+      <a href="/create" *ngIf="isLogged">Create</a>
       <a href="/about-us">About us</a>
+    </nav>
+
+    <div
+      class="hidden lg:flex items-center gap-4"
+      *ngIf="!isLogged"
+    >
+      <a  (click)="loginHandler()">Login</a>
+      <a href="/register">Register</a>
     </div>
-    <button>
+    <div class="hidden lg:flex items-center gap-4" *ngIf="
+    isLogged">
+      <p>Hello User</p>
+      <a (click)="logoutHandler()">Logout</a>
+    </div>
+    <button class="lg:hidden">
       <svg
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
