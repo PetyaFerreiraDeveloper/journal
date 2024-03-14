@@ -1,8 +1,5 @@
-import {
-  Component,
-  Input,
-} from '@angular/core';
-import { JournalEntry } from '../home/home.component';
+import { Component, Input } from '@angular/core';
+import { JournalEntry } from '../types/journal';
 
 @Component({
   selector: 'app-journal-entry',

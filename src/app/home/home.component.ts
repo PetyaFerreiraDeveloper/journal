@@ -1,16 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JournalService } from '../journal.service';
-
-export type JournalEntry = {
-  _ownerId: string;
-  title: string;
-  category: string;
-  journalEntry: string;
-  blog: boolean;
-  _createdOn: number;
-  _editedOn: number;
-  _id: string;
-};
+import { JournalEntry } from '../types/journal';
 
 @Component({
   selector: 'app-home',

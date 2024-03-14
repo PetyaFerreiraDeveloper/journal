@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { JournalEntry } from './home/home.component';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
+import { JournalEntry } from './types/journal';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +11,7 @@ export class JournalService {
   constructor(private httpClient: HttpClient) {}
 
   getJournals$(): Observable<JournalEntry[]> {
-    return this.httpClient.get<JournalEntry[]>(
-      'http://localhost:3030/data/journals'
-    );
+    const { apiUrl } = environment;
+    return this.httpClient.get<JournalEntry[]>(`${apiUrl}/journals`);
   }
 }
