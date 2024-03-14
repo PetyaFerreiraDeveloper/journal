@@ -8,10 +8,27 @@ import { JournalEntry } from './types/journal';
   providedIn: 'root',
 })
 export class JournalService {
+  apiUrl = environment.apiUrl;
+
   constructor(private httpClient: HttpClient) {}
 
-  getJournals$(): Observable<JournalEntry[]> {
-    const { apiUrl } = environment;
-    return this.httpClient.get<JournalEntry[]>(`${apiUrl}/journals`);
+  getAllJournals$(): Observable<JournalEntry[]> {
+    return this.httpClient.get<JournalEntry[]>(`${this.apiUrl}`);
+  }
+
+  getAllByOwner$(ownerId: string): Observable<JournalEntry[]> {
+    return this.httpClient.get<JournalEntry[]>(
+      `${this.apiUrl}?where=_ownerId%3D%22${ownerId}%22`
+    );
+  }
+
+  getAllShared$(): Observable<JournalEntry[]> {
+    return this.httpClient.get<JournalEntry[]>(
+      `${this.apiUrl}?where=blog%3Dtrue`
+    );
+  }
+
+  getOne$(entryId: string): Observable<JournalEntry> {
+    return this.httpClient.get<JournalEntry>(`${this.apiUrl}/${entryId}`);
   }
 }
