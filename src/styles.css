@@ -25,6 +25,7 @@ button:hover {
   cursor: pointer;
 }
 
-li {
+ol,
+ul {
   list-style: none;
 }
