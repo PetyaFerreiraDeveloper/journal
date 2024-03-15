@@ -56,3 +56,4 @@ STYLING
 [] - Edit Page
 [] - Delete Page
 [] - Logout Page
+[] - Entry-Lable Component - make background color and border color as variables depending on label
