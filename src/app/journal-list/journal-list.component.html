@@ -1,0 +1,15 @@
+<section class="flex flex-col items-center gap-y-10 py-20">
+  <h2 class="text-center text-3xl" *ngIf="journalEntries.length > 0">
+    See all your journal entries in one place
+  </h2>
+  <app-no-entries *ngIf="journalEntries.length == 0" />
+
+  <ul
+    class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-5 place-items-center"
+    *ngIf="journalEntries.length > 0"
+  >
+    <li *ngFor="let entry of journalEntries">
+      <app-journal-entry [entry]="entry" />
+    </li>
+  </ul>
+</section>

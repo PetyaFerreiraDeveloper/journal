@@ -9,14 +9,4 @@
   </p>
 </div>
 
-<button
-  class="bg-green-300 px-8 py-2 rounded-xl my-10"
-  (click)="handleCreateOrDestroyJournalEntry()"
->
-  {{ shouldShowJournalComponent ? "Destroy Journal" : "Create Journal" }}
-</button>
-<ul>
-  <li *ngFor="let entry of journalEntries">
-    <app-journal-entry *ngIf="shouldShowJournalComponent" [entry]="entry" />
-  </li>
-</ul>
+<app-journal-list />

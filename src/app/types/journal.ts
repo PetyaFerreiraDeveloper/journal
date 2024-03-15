@@ -7,6 +7,7 @@ export type JournalEntry = {
   _createdOn: number;
   _editedOn: number;
   _id: string;
+  author?: string;
 };
 
 export type CreateJournalEntry = {

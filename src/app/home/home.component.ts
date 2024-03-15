@@ -9,7 +9,6 @@ import { UserService } from '../user.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  shouldShowJournalComponent: boolean = false;
   journalEntries: JournalEntry[] = [];
   createdJournalEntry: CreateJournalEntry = {
     title: 'Deadlifts',
@@ -28,31 +27,22 @@ export class HomeComponent implements OnInit {
       .login$()
       .subscribe((login) => console.log('can i login', login));
 
-    this.journalService.getAllJournals$().subscribe((journalEntries) => {
-      this.journalEntries = journalEntries;
-      console.log('observable', this.journalEntries);
-    });
+    // this.journalService
+    //   .getAllByOwner$('35c62d76-8152-4626-8712-eeb96381bea8')
+    //   .subscribe((journalEntries) => {
+    //     console.log('entries by owner', journalEntries);
+    //   });
 
-    this.journalService
-      .getAllByOwner$('35c62d76-8152-4626-8712-eeb96381bea8')
-      .subscribe((journalEntries) => {
-        console.log('entries by owner', journalEntries);
-      });
+    // this.journalService
+    //   .getAllBlogs$()
+    //   .subscribe((blogs) => console.log('blogs', blogs));
 
-    this.journalService
-      .getAllBlogs$()
-      .subscribe((blogs) => console.log('blogs', blogs));
+    // this.journalService
+    //   .getOne$('ff436770-76c5-40e2-b231-77409eda7a61')
+    //   .subscribe((journal) => console.log('get one journal', journal));
 
-    this.journalService
-      .getOne$('ff436770-76c5-40e2-b231-77409eda7a61')
-      .subscribe((journal) => console.log('get one journal', journal));
-
-    this.journalService
-      .create$(this.createdJournalEntry)
-      .subscribe((entry) => console.log(entry));
-  }
-
-  handleCreateOrDestroyJournalEntry(): void {
-    this.shouldShowJournalComponent = !this.shouldShowJournalComponent;
+    // this.journalService
+    //   .create$(this.createdJournalEntry)
+    //   .subscribe((entry) => console.log(entry));
   }
 }

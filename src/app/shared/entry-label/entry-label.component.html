@@ -1,12 +1,11 @@
-<div>
-  <span
-    *ngIf="label"
-    class="border-2 text-white px-4 py-1 rounded-xl absolute top-0 right-0 uppercase bg-gray-800 border-gray-900"
-    >BLOG</span
-  >
-  <span
-    *ngIf="!label"
-    class="border-2 text-white px-4 py-1 rounded-xl absolute top-0 right-0 uppercase bg-dark-green border-darker-green"
-    >JOURNAL</span
-  >
-</div>
+<span
+  *ngIf="label"
+  class="border-2 text-white px-4 py-1 self-end rounded-xl uppercase bg-gray-800 border-gray-900"
+  >BLOG
+</span>
+<span
+  *ngIf="!label"
+  class="border-2 text-white px-4 py-1 rounded-xl uppercase bg-dark-green border-darker-green"
+>
+  JOURNAL
+</span>
