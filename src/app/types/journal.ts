@@ -8,3 +8,11 @@ export type JournalEntry = {
   _editedOn: number;
   _id: string;
 };
+
+export type CreateJournalEntry = {
+  title: string;
+  category: string;
+  journalEntry: string;
+  blog: boolean;
+  authorName?: string;
+};

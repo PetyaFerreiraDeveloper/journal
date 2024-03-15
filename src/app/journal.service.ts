@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { JournalEntry } from './types/journal';
+import { CreateJournalEntry, JournalEntry } from './types/journal';
 
 @Injectable({
   providedIn: 'root',
@@ -22,13 +22,17 @@ export class JournalService {
     );
   }
 
-  getAllShared$(): Observable<JournalEntry[]> {
+  getAllBlogs$(): Observable<JournalEntry[]> {
     return this.httpClient.get<JournalEntry[]>(
       `${this.apiUrl}?where=blog%3Dtrue`
     );
   }
 
-  getOne$(entryId: string): Observable<JournalEntry> {
-    return this.httpClient.get<JournalEntry>(`${this.apiUrl}/${entryId}`);
+  getOne$(journalId: string): Observable<JournalEntry> {
+    return this.httpClient.get<JournalEntry>(`${this.apiUrl}/${journalId}`);
+  }
+
+  create$(journalEntry: CreateJournalEntry): Observable<CreateJournalEntry> {
+    return this.httpClient.post<CreateJournalEntry>(this.apiUrl, journalEntry);
   }
 }
