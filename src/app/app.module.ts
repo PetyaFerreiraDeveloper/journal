@@ -8,20 +8,19 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { JournalModule } from './journal/journal.module';
 import { UserModule } from './user/user.module';
+import { ErrorComponent } from './error/error.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-  ],
+  declarations: [AppComponent, HomeComponent, ErrorComponent, AboutComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     CoreModule,
     SharedModule,
     JournalModule,
-    UserModule
+    UserModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
