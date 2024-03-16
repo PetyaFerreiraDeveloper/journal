@@ -1,43 +1,39 @@
 <header
-  class="py-2 px-8 3xl:w-9/12 3xl:m-auto max-w-screen-3xl z-10 text-white bg-slate-800"
+  class="px-8 3xl:w-9/12 3xl:m-auto max-w-screen-3xl z-10 text-white bg-slate-800 h-18 md:24 flex justify-between items-center"
 >
-  <div class="flex justify-between items-center">
-    <a href="/">
-      <img
-        src="../../assets/logoWhite.svg"
-        alt="white logo"
-        class="w-16 md:w-24"
-      />
-    </a>
-    <nav class="hidden lg:flex items-center gap-4">
-      <a href="/">Home</a>
-      <a href="/blog">Blog</a>
-      <a href="/my-journal" *ngIf="isLogged">My Journal</a>
-      <a href="/create" *ngIf="isLogged">Create</a>
-      <a href="/about-us">About us</a>
-    </nav>
+  <a href="/">
+    <img
+      src="../../assets/logoWhite.svg"
+      alt="white logo"
+      class="w-16 md:w-20"
+    />
+  </a>
+  <nav class="hidden lg:flex items-center gap-4">
+    <a href="/">Home</a>
+    <a href="/blog">Blog</a>
+    <a href="/my-journal" *ngIf="isLogged">My Journal</a>
+    <a href="/create" *ngIf="isLogged">Create</a>
+    <a href="/about-us">About us</a>
+    <a href="/profile" *ngIf="isLogged">Profile</a>
 
-    <div
-      class="hidden lg:flex items-center gap-4"
-      *ngIf="!isLogged"
-    >
-      <a  (click)="loginHandler()">Login</a>
-      <a href="/register">Register</a>
-    </div>
-    <div class="hidden lg:flex items-center gap-4" *ngIf="
-    isLogged">
-      <p>Hello User</p>
-      <a (click)="logoutHandler()">Logout</a>
-    </div>
-    <button class="lg:hidden">
-      <svg
-        data-name="Layer 1"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 25 17"
-        class="w-6 h-4 fill-white"
-      >
-        <path d="M0 0h24.48v2H0zM0 7.47h24.48v2H0zM0 14.54h24.48v2H0z" />
-      </svg>
-    </button>
+  </nav>
+
+  <div class="hidden lg:flex items-center gap-4" *ngIf="!isLogged">
+    <a (click)="loginHandler()">Login</a>
+    <a href="/register">Register</a>
   </div>
+  <div class="hidden lg:flex items-center gap-4" *ngIf="isLogged">
+    <p>Hello User</p>
+    <a (click)="logoutHandler()">Logout</a>
+  </div>
+  <button class="lg:hidden align-middle">
+    <svg
+      data-name="Layer 1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 25 17"
+      class="w-6 h-4 fill-white"
+    >
+      <path d="M0 0h24.48v2H0zM0 7.47h24.48v2H0zM0 14.54h24.48v2H0z" />
+    </svg>
+  </button>
 </header>
