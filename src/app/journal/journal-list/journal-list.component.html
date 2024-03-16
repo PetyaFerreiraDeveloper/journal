@@ -1,4 +1,12 @@
-<section class="flex flex-col items-center gap-y-10 py-20">
+<section
+  class="flex flex-col items-center gap-y-10 py-10 
+  lg:py-20"
+  *ngIf="isLoading"
+>
+  <app-loader />
+</section>
+
+<section class="flex flex-col items-center gap-y-10 py-20" *ngIf="!isLoading">
   <h2 class="text-center text-3xl" *ngIf="journalEntries.length > 0">
     See all your journal entries in one place
   </h2>
