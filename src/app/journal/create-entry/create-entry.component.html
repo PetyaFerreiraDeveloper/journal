@@ -9,6 +9,7 @@
       name="title"
       placeholder="Entry Title..."
       class="outline-hidden focus:outline-none w-full"
+      #titleInput
     />
   </div>
   <!-- {errors.title && (
@@ -24,11 +25,12 @@
       name="category"
       placeholder="Fun"
       class="outline-hidden focus:outline-none w-full"
+      #categoryInput
     />
   </div>
   <div class="flex gap-x-3 border-b-2">
     <label htmlFor="blog">Share this record on the Blog: </label>
-    <input type="checkbox" name="blog" id="blog" class="w-5" />
+    <input type="checkbox" name="blog" id="blog" class="w-5" #blogCheckbox />
   </div>
   <!-- {newEntry.blog ? (
             <div class="flex gap-x-3 border-b-2">
@@ -51,6 +53,7 @@
     placeholder="Start your entry today"
     rows="9"
     class="border-2 w-full focus:outline-none"
+    #journalEntry
   ></textarea>
   <!-- {errors.journalEntry && (
             <p class="text-red-500">
@@ -63,10 +66,18 @@
               record
             </p>
           ) : null } -->
-
-  <button
-    class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
-  >
-    Create
-  </button>
+  <div class="flex gap-4 self-end">
+    <button
+      class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
+      (click)="createHandler($event, titleInput.value,categoryInput.value, blogCheckbox.checked, journalEntry.value)"
+    >
+      Create
+    </button>
+    <button
+      class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
+      (click)="backHandler($event)"
+    >
+      Cancel
+    </button>
+  </div>
 </form>
