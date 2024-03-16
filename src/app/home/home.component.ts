@@ -23,9 +23,9 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService
-      .login$()
-      .subscribe((login) => console.log('can i login', login));
+    // this.userService
+    //   .login$()
+    //   .subscribe((login) => console.log('can i login', login));
 
     // this.journalService
     //   .getAllByOwner$('35c62d76-8152-4626-8712-eeb96381bea8')

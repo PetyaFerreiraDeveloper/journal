@@ -5,11 +5,13 @@
   <div class="flex gap-x-3 justify-end">
     <button
       class="rounded-lg border-2 bg-orange-500 border-orange-600 px-8 py-2 text-white"
+      (click)="logoutHandler()"
     >
       Yes
     </button>
     <button
       class="rounded-lg border-2 text-white bg-dark-green border-darker-green px-8 py-2"
+      (click)="backHandler()"
     >
       No
     </button>

@@ -7,16 +7,13 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+  constructor(public userService: UserService) {}
+
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
-  constructor(public userService: UserService) {}
 
-  loginHandler(): void {
-    this.userService.login();
-  }
-
-  logoutHandler(): void {
-    this.userService.logout();
+  get firstName(): string {
+    return this.userService.user?.firstName || '';
   }
 }
