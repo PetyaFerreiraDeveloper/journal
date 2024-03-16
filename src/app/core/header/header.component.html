@@ -14,7 +14,6 @@
     <a routerLink="/my-journal" *ngIf="isLogged">My Journal</a>
     <a routerLink="/create-entry" *ngIf="isLogged">Create</a>
     <a routerLink="/about-us">About us</a>
-    <a routerLink="/profile" *ngIf="isLogged"> Profile</a>
   </nav>
 
   <div class="hidden lg:flex items-center gap-4" *ngIf="!isLogged">
@@ -22,7 +21,7 @@
     <a routerLink="/register">Register</a>
   </div>
   <div class="hidden lg:flex items-center gap-4" *ngIf="isLogged">
-    <p>Hello {{firstName}}</p>
+    <p>Hello {{ email }}</p>
     <a routerLink="/logout">Logout</a>
   </div>
   <button class="lg:hidden align-middle">
