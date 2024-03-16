@@ -9,6 +9,10 @@ const routes: Routes = [
   { path: 'about-us', component: AboutComponent },
   {
     path: '**',
+    redirectTo: '/not-found',
+  },
+  {
+    path: 'not-found',
     component: ErrorComponent,
   },
 ];
