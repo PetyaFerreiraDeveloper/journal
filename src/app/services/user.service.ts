@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { User } from '../types/user';
+import { AuthUser, LoginUser, User } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
@@ -10,13 +10,11 @@ import { User } from '../types/user';
 export class UserService {
   apiUrl = environment.apiUrl;
   authUrl = environment.authUrl;
-  // isLogged: boolean = true;
+
   USER_KEY = '[user]';
-  user: User | undefined;
+  user: AuthUser | undefined;
 
   loginUser = {
-    firstName: 'Peter',
-    lastName: 'Petrov',
     email: 'peter@abv.bg',
     password: '123456',
   };
@@ -42,11 +40,26 @@ export class UserService {
   }
 
   login$(): Observable<any> {
-    this.user = this.loginUser;
+    // this.user = this.loginUser;
 
     // save the user in local storage
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
 
-    return this.httpClient.post<any>(`${this.authUrl}/login`, this.loginUser);
+    return this.httpClient.post<LoginUser>(`${this.authUrl}/login`, {
+      email: this.loginUser.email,
+      password: this.loginUser.password,
+    });
+  }
+
+  register$(): Observable<any> {
+    // this.user = this.loginUser;
+
+    // save the user in local storage
+    // localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+
+    return this.httpClient.post<LoginUser>(`${this.authUrl}/register`, {
+      email: 'test24@gmail.com',
+      password: '123456',
+    });
   }
 }

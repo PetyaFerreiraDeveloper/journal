@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { AuthUser } from 'src/app/types/user';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,16 @@ export class LoginComponent {
   loginHandler(event: Event) {
     event.preventDefault();
 
-    this.userService.login$();
-    this.router.navigate(['/my-journal'])
+    this.userService.login$().subscribe((data: AuthUser) => {
+      localStorage.setItem('[user]', JSON.stringify(data));
+      console.log(data);
+    });
+
+    // this.userService.register$().subscribe((data: any) => {
+    //   // localStorage.setItem('[user]', JSON.stringify(data));
+    //   console.log(data);
+    // });
+
+    this.router.navigate(['/my-journal']);
   }
 }

@@ -17,7 +17,6 @@ export class JournalListComponent implements OnInit {
       next: (journals) => {
         this.journalEntries = journals;
         this.isLoading = false;
-        console.log(journals);
       },
       error: (err) => {
         this.isLoading = false;

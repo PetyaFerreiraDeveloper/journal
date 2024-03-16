@@ -13,7 +13,7 @@ export class HeaderComponent {
     return this.userService.isLogged;
   }
 
-  get firstName(): string {
-    return this.userService.user?.firstName || '';
+  get email(): string {
+    return this.userService.user?.email || '';
   }
 }

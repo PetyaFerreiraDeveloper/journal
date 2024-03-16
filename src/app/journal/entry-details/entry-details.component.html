@@ -1,0 +1,19 @@
+<app-loader *ngIf="isLoading" />
+<article
+  class="flex flex-col justify-center gap-y-4 p-4 w-full border-2 border-gray-600 bg-green-500 rounded-2xl shadow-[0_2px_4px_1px_rgba(190,193,202,0.5)] drop-shadow-xl text-white mt-20"
+  *ngIf="!isLoading"
+>
+  <app-entry-label [label]="currentEntry.blog" />
+  <p class="break-words">Category: {{ currentEntry.category }}</p>
+  <h3 class="break-words">Title: {{ currentEntry.title }}</h3>
+  <p>Created on: {{ currentEntry._createdOn | date }}</p>
+  <p *ngIf="!!currentEntry.author" class="truncate w-48">
+    Author: {{ currentEntry.author | titlecase }}
+  </p>
+  <p *ngIf="!!currentEntry._editedOn">
+    Updated on: {{ currentEntry._editedOn | date }}
+  </p>
+
+  <p class="break-words">Journal Entry: {{ currentEntry.journalEntry }}</p>
+</article>
+
