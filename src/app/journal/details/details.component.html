@@ -1,1 +1,17 @@
-<p>details works!</p>
+<article
+  class="flex flex-col justify-center gap-y-4 p-4 w-full border-2 border-gray-600 rounded-2xl shadow-[0_2px_4px_1px_rgba(190,193,202,0.5)] drop-shadow-xl text-white mt-20"
+>
+  <!-- {journalEntry.blog ? <BlogLabel label={'blog'}/>: <BlogLabel label={'journal'}/>} -->
+
+  <p class="break-words">Category:</p>
+  <h3 class="break-words">Title:</h3>
+  <p>Created on:</p>
+
+  <!-- {journalEntry.blog ?
+  <p class="truncate w-48">{`Author: ${capitalizeFirstLetter(author)}`}</p>
+  : null} {journalEntry._updatedOn ? (
+  <p>{`Updated on: ${dateFormatter(journalEntry._updatedOn)}`}</p>
+  ) : null} -->
+
+  <p class="break-words">Journal Entry:</p>
+</article>
