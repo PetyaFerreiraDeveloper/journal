@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { JournalService } from '../journal.service';
+import { JournalService } from '../services/journal.service';
 import { CreateJournalEntry, JournalEntry } from '../types/journal';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',

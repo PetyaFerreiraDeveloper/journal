@@ -3,10 +3,14 @@ import { CommonModule } from '@angular/common';
 import { JournalListComponent } from './journal-list/journal-list.component';
 import { JournalEntryComponent } from './journal-entry/journal-entry.component';
 import { SharedModule } from '../shared/shared.module';
+import { CreateEntryComponent } from './create-entry/create-entry.component';
+import { DetailsComponent } from './details/details.component';
+import { JournalRoutingModule } from './journal-routing.module';
+import { BlogListComponent } from './blog-list/blog-list.component';
 
 @NgModule({
-  declarations: [JournalListComponent, JournalEntryComponent],
-  imports: [CommonModule, SharedModule],
+  declarations: [JournalListComponent, JournalEntryComponent, CreateEntryComponent, DetailsComponent, BlogListComponent],
+  imports: [CommonModule, SharedModule, JournalRoutingModule],
   exports: [JournalListComponent, JournalEntryComponent],
 })
 export class JournalModule {}

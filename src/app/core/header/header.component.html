@@ -1,7 +1,7 @@
 <header
   class="px-8 3xl:w-9/12 3xl:m-auto max-w-screen-3xl z-10 text-white bg-slate-800 h-18 md:24 flex justify-between items-center"
 >
-  <a href="/">
+  <a routerLink="/">
     <img
       src="../../assets/logoWhite.svg"
       alt="white logo"
@@ -9,22 +9,22 @@
     />
   </a>
   <nav class="hidden lg:flex items-center gap-4">
-    <a href="/">Home</a>
-    <a href="/blog">Blog</a>
-    <a href="/my-journal" *ngIf="isLogged">My Journal</a>
-    <a href="/create" *ngIf="isLogged">Create</a>
-    <a href="/about-us">About us</a>
-    <a href="/profile" *ngIf="isLogged">Profile</a>
+    <a routerLink="/">Home</a>
+    <a routerLink="/blog">Blog</a>
+    <a routerLink="/my-journal" *ngIf="isLogged">My Journal</a>
+    <a routerLink="/create" *ngIf="isLogged">Create</a>
+    <a routerLink="/about-us">About us</a>
+    <a routerLink="/profile" *ngIf="isLogged">Profile</a>
 
   </nav>
 
   <div class="hidden lg:flex items-center gap-4" *ngIf="!isLogged">
-    <a (click)="loginHandler()">Login</a>
-    <a href="/register">Register</a>
+    <a (click)="loginHandler()" routerLink="/login">Login</a>
+    <a routerLink="/register">Register</a>
   </div>
   <div class="hidden lg:flex items-center gap-4" *ngIf="isLogged">
     <p>Hello User</p>
-    <a (click)="logoutHandler()">Logout</a>
+    <a routerLink="/logout" (click)="logoutHandler()">Logout</a>
   </div>
   <button class="lg:hidden align-middle">
     <svg

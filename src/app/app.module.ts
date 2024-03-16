@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { JournalModule } from './journal/journal.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { JournalModule } from './journal/journal.module';
     HttpClientModule,
     CoreModule,
     SharedModule,
-    JournalModule
+    JournalModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent],
