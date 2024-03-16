@@ -1,1 +1,72 @@
-<p>create-entry works!</p>
+<form
+  class="min-w-[350px] md:w-[500px] flex flex-col justify-center border-2 gap-y-6 py-20 md:px-6 bg-white mt-20"
+>
+  <div class="flex gap-x-3 border-b-2">
+    <label htmlFor="title">Title:</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      placeholder="Entry Title..."
+      class="outline-hidden focus:outline-none w-full"
+    />
+  </div>
+  <!-- {errors.title && (
+            <p class="text-red-500">
+              Title should be at least three characters long
+            </p>
+          )} -->
+  <div class="flex gap-x-3 border-b-2">
+    <label htmlFor="category">Category:</label>
+    <input
+      type="text"
+      id="category"
+      name="category"
+      placeholder="Fun"
+      class="outline-hidden focus:outline-none w-full"
+    />
+  </div>
+  <div class="flex gap-x-3 border-b-2">
+    <label htmlFor="blog">Share this record on the Blog: </label>
+    <input type="checkbox" name="blog" id="blog" class="w-5" />
+  </div>
+  <!-- {newEntry.blog ? (
+            <div class="flex gap-x-3 border-b-2">
+              <label htmlFor="authorName">Author Name: </label>
+              <input
+                type="text"
+                id="authorName"
+                name="authorName"
+                placeholder="Name..."
+                class="max-w-[135px] focus:outline-none"
+                onChange={onChange}
+                value={newEntry.authorName}
+              />
+            </div>
+          ) : null} -->
+
+  <textarea
+    name="journalEntry"
+    id="journalEntry"
+    placeholder="Start your entry today"
+    rows="9"
+    class="border-2 w-full focus:outline-none"
+  ></textarea>
+  <!-- {errors.journalEntry && (
+            <p class="text-red-500">
+              Your journal entry should be at least three characters long
+            </p>
+          )}
+          {(formError || isFormNotValid ) ? (
+            <p class="text-red-500">
+              Please fill out both entry title and entry text to create a
+              record
+            </p>
+          ) : null } -->
+
+  <button
+    class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
+  >
+    Create
+  </button>
+</form>

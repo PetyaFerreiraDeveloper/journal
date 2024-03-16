@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { JournalListComponent } from './journal-list/journal-list.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
+import { CreateEntryComponent } from './create-entry/create-entry.component';
 
 const routes: Route[] = [
   {
@@ -12,6 +13,7 @@ const routes: Route[] = [
     path: 'blog',
     component: BlogListComponent,
   },
+  { path: 'create-entry', component: CreateEntryComponent },
 ];
 
 @NgModule({
