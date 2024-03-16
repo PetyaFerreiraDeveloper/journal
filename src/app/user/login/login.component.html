@@ -1,0 +1,34 @@
+<form
+  class="flex flex-col justify-center border-2 rounded-2xl m-auto gap-y-6 p-6 bg-white mt-20"
+>
+  <h1 class="text-center">Login</h1>
+  <div class="flex gap-x-10 justify-between">
+    <label>Email:</label>
+    <input
+      type="text"
+      id="email"
+      name="email"
+      class="border-2 outline-hidden focus:outline-none"
+    />
+  </div>
+  <div class="flex gap-x-10 justify-between">
+    <label>Password:</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      class="border-2 outline-hidden focus:outline-none"
+    />
+  </div>
+  <button
+    class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
+  >
+    Login
+  </button>
+  <p class="self-end">
+    <span>If you don't have a profile yet</span>
+    <a routerLink="/register" class=" text-blue-600">
+      click here
+    </a>
+  </p>
+</form>

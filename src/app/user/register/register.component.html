@@ -1,0 +1,42 @@
+<form class="flex flex-col border-2 rounded-2xl gap-y-6 p-6 bg-white mt-20">
+  <h1 class="text-center">Register</h1>
+
+  <div class="flex gap-x-3 md:gap-x-10 justify-between">
+    <label htmlFor="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="maria@email.com"
+      class="border-2 outline-hidden focus:outline-none"
+    />
+  </div>
+  <div class="flex gap-x-3 md:gap-x-10 justify-between">
+    <label htmlFor="password">Password:</label>
+    <input
+      class="border-2 outline-hidden focus:outline-none"
+      type="password"
+      name="password"
+      id="password"
+    />
+  </div>
+  <div class="flex gap-x-3 md:gap-x-10 justify-between">
+    <label>Confirm Password:</label>
+    <input
+      type="password"
+      name="confirmPass"
+      id="confirmPass"
+      class="border-2 outline-hidden focus:outline-none"
+    />
+  </div>
+  <button
+    class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
+  >
+    Register
+  </button>
+
+  <p class="self-end">
+    <span> If you already have profile </span>
+    <a routerLink="/login" class="text-blue-600"> click here </a>
+  </p>
+</form>
