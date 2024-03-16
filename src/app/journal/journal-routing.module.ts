@@ -4,6 +4,7 @@ import { JournalListComponent } from './journal-list/journal-list.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { CreateEntryComponent } from './create-entry/create-entry.component';
 import { DetailsComponent } from './details/details.component';
+import { AuthActivate } from '../guards/auth.activate';
 
 const routes: Route[] = [
   {
@@ -34,7 +35,7 @@ const routes: Route[] = [
       },
     ],
   },
-  { path: 'create-entry', component: CreateEntryComponent },
+  { path: 'create-entry', component: CreateEntryComponent, canActivate: [AuthActivate] },
 ];
 
 @NgModule({
