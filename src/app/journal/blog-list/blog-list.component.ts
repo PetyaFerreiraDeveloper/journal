@@ -16,8 +16,6 @@ export class BlogListComponent implements OnInit {
   ngOnInit(): void {
     this.journalService.getAllBlogs$().subscribe({
       next: (blogs) => {
-        console.log(blogs);
-        
         this.blogEntries = blogs;
         this.isLoading = false
       },

@@ -7,9 +7,11 @@ import { CreateEntryComponent } from './create-entry/create-entry.component';
 import { DetailsComponent } from './details/details.component';
 import { JournalRoutingModule } from './journal-routing.module';
 import { BlogListComponent } from './blog-list/blog-list.component';
+import { BlogEntryComponent } from './blog-entry/blog-entry.component';
+import { EntryDetailsComponent } from './entry-details/entry-details.component';
 
 @NgModule({
-  declarations: [JournalListComponent, JournalEntryComponent, CreateEntryComponent, DetailsComponent, BlogListComponent],
+  declarations: [JournalListComponent, JournalEntryComponent, CreateEntryComponent, DetailsComponent, BlogListComponent, BlogEntryComponent, EntryDetailsComponent],
   imports: [CommonModule, SharedModule, JournalRoutingModule],
   exports: [JournalListComponent, JournalEntryComponent],
 })
