@@ -31,14 +31,14 @@ CONTENT
 [] - Home page
 [] - Blog page - if there are no blog posts
 [] - About us page
-[] - Login page
+[x] - Login page
 [] - Register page
 [] - My Journal Page
 [] - Create Page
 [] - Details Page
 [] - Edit Page
 [] - Delete Page
-[] - Logout Page
+[x] - Logout Page
 
 STYLING
 
@@ -57,3 +57,6 @@ STYLING
 [] - Delete Page
 [] - Logout Page
 [] - Entry-Lable Component - make background color and border color as variables depending on label
+
+Components:
+[] - create button component to be used throughout the app
