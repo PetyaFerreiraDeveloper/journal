@@ -6,8 +6,18 @@ import { NoEntriesComponent } from './no-entries/no-entries.component';
 import { EmailDirective } from './validators/email.directive';
 
 @NgModule({
-  declarations: [LoaderComponent, EntryLabelComponent, NoEntriesComponent, EmailDirective],
+  declarations: [
+    LoaderComponent,
+    EntryLabelComponent,
+    NoEntriesComponent,
+    EmailDirective,
+  ],
   imports: [CommonModule],
-  exports: [LoaderComponent, EntryLabelComponent, NoEntriesComponent, EmailDirective],
+  exports: [
+    LoaderComponent,
+    EntryLabelComponent,
+    NoEntriesComponent,
+    EmailDirective,
+  ],
 })
 export class SharedModule {}
