@@ -62,8 +62,10 @@ Components:
 [] - create button component to be used throughout the app
 
 ActiveGuards:
-[] Guard for My-Journal page
-[] Guard for Create page
+[x] Guard for My-Journal page
+[x] Guard for Create page
+[x] Guard for Logout page
+[x] Guard for Journal details page
 [] Guard for Edit page
-[] Guard for Logout page
+[] Create the active guard using the CanActivateFn, because CanActivate is depricated
 
