@@ -1,35 +1,80 @@
 <form
   class="flex flex-col justify-center border-2 rounded-2xl m-auto gap-y-6 p-6 bg-white mt-20"
+  #form="ngForm"
+  (ngSubmit)="loginHandler(form)"
 >
   <h1 class="text-center">Login</h1>
-  <div class="flex gap-x-10 justify-between">
-    <label>Email:</label>
-    <input
-      type="text"
-      id="email"
-      name="email"
-      class="border-2 outline-hidden focus:outline-none"
-    />
+  <div>
+    <div class="flex gap-x-10 justify-between mb-2">
+      <label>Email:</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        class="border-2 outline-hidden focus:outline-none pl-2"
+        placeholder="Enter email"
+        autocomplete="email"
+        ngModel
+        #emailInput="ngModel"
+        required
+        minlength="5"
+        [appEmail]="['gmail.com', 'hotmail.com', 'abv.bg']"
+        [ngClass]="
+          emailInput.errors && emailInput.touched
+            ? 'border-l-red-400'
+            : 'border-l-green-400'
+        "
+      />
+    </div>
+    <ng-container *ngIf="emailInput.touched">
+      <p class="text-red-500" *ngIf="emailInput.errors?.['required']">
+        Email is required
+      </p>
+      <p class="text-red-500" *ngIf="emailInput.errors?.['validateEmail']">
+        Email is not valid. Expected email domains are:
+        {{emailInput.errors?.['expectedDomains']}}
+      </p>
+    </ng-container>
   </div>
-  <div class="flex gap-x-10 justify-between">
-    <label>Password:</label>
-    <input
-      type="password"
-      id="password"
-      name="password"
-      class="border-2 outline-hidden focus:outline-none"
-    />
+  <div>
+    <div class="flex gap-x-10 justify-between mb-2">
+      <label>Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="border-2 outline-hidden focus:outline-none placeholder:translate-y-1 pl-2"
+        placeholder="*********"
+        autocomplete="current-password"
+        ngModel
+        #passwordInput="ngModel"
+        required
+        minlength="5"
+        [ngClass]="
+          passwordInput.errors && passwordInput.touched
+            ? 'border-l-red-400'
+            : 'border-l-green-400'
+        "
+      />
+    </div>
+    <ng-container *ngIf="passwordInput.touched">
+      <p class="text-red-500" *ngIf="passwordInput.errors?.['required']">
+        Password is required
+      </p>
+      <p class="text-red-500" *ngIf="passwordInput.errors?.['minlength']">
+        Password is not valid. It must be at least
+        {{passwordInput.errors?.['minlength'].requiredLength}} characters.
+      </p>
+    </ng-container>
   </div>
+
   <button
     class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
-    (click)="loginHandler($event)"
   >
     Login
   </button>
   <p class="self-end">
     <span>If you don't have a profile yet</span>
-    <a routerLink="/register" class=" text-blue-600">
-      click here
-    </a>
+    <a routerLink="/register" class="text-blue-600"> click here </a>
   </p>
 </form>
