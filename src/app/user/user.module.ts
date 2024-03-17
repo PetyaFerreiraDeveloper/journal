@@ -4,6 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UserRoutingModule } from './user-routing.module';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -11,6 +13,6 @@ import { UserRoutingModule } from './user-routing.module';
     RegisterComponent,
     LogoutComponent,
   ],
-  imports: [CommonModule, UserRoutingModule],
+  imports: [CommonModule, UserRoutingModule, FormsModule, SharedModule],
 })
 export class UserModule {}

@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { LoaderComponent } from './loader/loader.component';
 import { EntryLabelComponent } from './entry-label/entry-label.component';
 import { NoEntriesComponent } from './no-entries/no-entries.component';
+import { EmailDirective } from './validators/email.directive';
 
 @NgModule({
-  declarations: [LoaderComponent, EntryLabelComponent, NoEntriesComponent],
+  declarations: [LoaderComponent, EntryLabelComponent, NoEntriesComponent, EmailDirective],
   imports: [CommonModule],
-  exports: [LoaderComponent, EntryLabelComponent, NoEntriesComponent],
+  exports: [LoaderComponent, EntryLabelComponent, NoEntriesComponent, EmailDirective],
 })
 export class SharedModule {}
