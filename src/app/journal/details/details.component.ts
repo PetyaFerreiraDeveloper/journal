@@ -12,6 +12,9 @@ import { AuthUser } from 'src/app/types/user';
   styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
+  currentEntry: JournalEntry = {} as JournalEntry;
+  isLoading: boolean = true;
+
   user: AuthUser = {} as AuthUser;
   showEditButtons: boolean = false;
   ownerId: string = '';
@@ -25,34 +28,23 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const entryId =
-      this.route.snapshot.params['journalId'] ||
-      this.route.snapshot.params['blogId'];
+    this.route.params.subscribe((data) => {
+      const entryId = data['journalId'] || data['blogId'];
 
-    this.journalService.getOne$(entryId).subscribe((data) => {
-      
-      this.ownerId = data._ownerId;
-      console.log('ownerId', this.ownerId);
-      
-      // if (this.loggedUserId == this.ownerId) {
-      //   this.showEditButtons = true;
-      // }
-      // console.log(this.showEditButtons);
+      this.journalService.getOne$(entryId).subscribe((entry) => {
+        this.currentEntry = entry;
+        this.isLoading = false;
+        this.ownerId = entry._ownerId;
+      });
     });
 
     this.userService.login$().subscribe((data: AuthUser) => {
-      
       this.user = data;
       this.loggedUserId = data._id;
-      console.log('loggedUserid', this.loggedUserId);
-      
     });
-
-    
   }
 
-
-  backHandler():void {
+  backHandler(): void {
     this.location.back();
   }
 }
