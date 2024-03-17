@@ -12,9 +12,11 @@ export class UserService {
   authUrl = environment.authUrl;
 
   USER_KEY = '[user]';
-  user: AuthUser | undefined;
+  user: User | undefined;
 
   loginUser = {
+    firstName: 'Peter',
+    lastName: 'Petrov',
     email: 'peter@abv.bg',
     password: '123456',
   };
@@ -40,7 +42,7 @@ export class UserService {
   }
 
   login$(): Observable<any> {
-    // this.user = this.loginUser;
+    this.user = this.loginUser;
 
     // save the user in local storage
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
@@ -51,15 +53,15 @@ export class UserService {
     });
   }
 
-  register$(): Observable<any> {
-    // this.user = this.loginUser;
+  // register$(): Observable<any> {
+  //   // this.user = this.loginUser;
 
-    // save the user in local storage
-    // localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+  //   // save the user in local storage
+  //   // localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
 
-    return this.httpClient.post<LoginUser>(`${this.authUrl}/register`, {
-      email: 'test24@gmail.com',
-      password: '123456',
-    });
-  }
+  //   return this.httpClient.post<LoginUser>(`${this.authUrl}/register`, {
+  //     email: 'test24@gmail.com',
+  //     password: '123456',
+  //   });
+  // }
 }

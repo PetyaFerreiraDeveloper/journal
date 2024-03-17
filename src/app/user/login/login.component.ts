@@ -14,10 +14,13 @@ export class LoginComponent {
   loginHandler(event: Event) {
     event.preventDefault();
 
-    this.userService.login$().subscribe((data: AuthUser) => {
-      localStorage.setItem('[user]', JSON.stringify(data));
-      console.log(data);
-    });
+    // this.userService.login$().subscribe((data: AuthUser) => {
+    //   localStorage.setItem('[user]', JSON.stringify(data));
+    //   this.user = data
+    //   // console.log(data);
+    // });
+
+    this.userService.login$()
 
     // this.userService.register$().subscribe((data: any) => {
     //   // localStorage.setItem('[user]', JSON.stringify(data));
