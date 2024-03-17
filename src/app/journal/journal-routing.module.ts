@@ -4,7 +4,7 @@ import { JournalListComponent } from './journal-list/journal-list.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { CreateEntryComponent } from './create-entry/create-entry.component';
 import { DetailsComponent } from './details/details.component';
-import { AuthActivate } from '../guards/auth.activate';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Route[] = [
   {
@@ -14,10 +14,12 @@ const routes: Route[] = [
         path: '',
         pathMatch: 'full',
         component: JournalListComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: ':journalId',
         component: DetailsComponent,
+        canActivate: [AuthGuard],
       },
     ],
   },
@@ -35,7 +37,11 @@ const routes: Route[] = [
       },
     ],
   },
-  { path: 'create-entry', component: CreateEntryComponent, canActivate: [AuthActivate] },
+  {
+    path: 'create-entry',
+    component: CreateEntryComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

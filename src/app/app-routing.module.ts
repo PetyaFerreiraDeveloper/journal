@@ -5,7 +5,8 @@ import { AboutComponent } from './about/about.component';
 import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: '', pathMatch: 'full', redirectTo: '/home' },
+  { path: 'home', pathMatch: 'full', component: HomeComponent },
   { path: 'about-us', component: AboutComponent },
   {
     path: '**',

@@ -3,6 +3,7 @@ import { Route, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Route[] = [
   {
@@ -16,6 +17,7 @@ const routes: Route[] = [
   {
     path: 'logout',
     component: LogoutComponent,
+    canActivate: [AuthGuard],
   },
 ];
 
