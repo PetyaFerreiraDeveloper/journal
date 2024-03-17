@@ -60,3 +60,10 @@ STYLING
 
 Components:
 [] - create button component to be used throughout the app
+
+ActiveGuards:
+[] Guard for My-Journal page
+[] Guard for Create page
+[] Guard for Edit page
+[] Guard for Logout page
+
