@@ -9,10 +9,19 @@ import { JournalRoutingModule } from './journal-routing.module';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogEntryComponent } from './blog-entry/blog-entry.component';
 import { EntryDetailsComponent } from './entry-details/entry-details.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [JournalListComponent, JournalEntryComponent, CreateEntryComponent, DetailsComponent, BlogListComponent, BlogEntryComponent, EntryDetailsComponent],
-  imports: [CommonModule, SharedModule, JournalRoutingModule],
+  declarations: [
+    JournalListComponent,
+    JournalEntryComponent,
+    CreateEntryComponent,
+    DetailsComponent,
+    BlogListComponent,
+    BlogEntryComponent,
+    EntryDetailsComponent,
+  ],
+  imports: [CommonModule, SharedModule, FormsModule, JournalRoutingModule],
   exports: [JournalListComponent, JournalEntryComponent],
 })
 export class JournalModule {}

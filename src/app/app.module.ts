@@ -10,6 +10,7 @@ import { JournalModule } from './journal/journal.module';
 import { UserModule } from './user/user.module';
 import { ErrorComponent } from './error/error.component';
 import { AboutComponent } from './about/about.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, ErrorComponent, AboutComponent],
@@ -21,6 +22,7 @@ import { AboutComponent } from './about/about.component';
     UserModule,
     JournalModule,
     AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
