@@ -5,8 +5,8 @@
   <p class="break-words">Category: {{ currentEntry.category }}</p>
   <h3 class="break-words">Title: {{ currentEntry.title }}</h3>
   <p>Created on: {{ currentEntry._createdOn | date }}</p>
-  <p *ngIf="!!currentEntry.author" class="truncate w-48">
-    Author: {{ currentEntry.author | titlecase }}
+  <p *ngIf="!!currentEntry.authorName" class="truncate w-48">
+    Author: {{ currentEntry.authorName | titlecase }}
   </p>
   <p *ngIf="!!currentEntry._editedOn">
     Updated on: {{ currentEntry._editedOn | date }}

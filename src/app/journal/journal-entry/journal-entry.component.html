@@ -9,8 +9,8 @@
     <span>{{ entry._createdOn | date }}</span>
     <div *ngIf="entry.blog" class="flex gap-2">
       <span>Author:</span>
-      <span *ngIf="entry.author">{{ entry.author }}</span>
-      <span *ngIf="!entry.author">Anonymous</span>
+      <span *ngIf="entry.authorName">{{ entry.authorName }}</span>
+      <span *ngIf="!entry.authorName">Anonymous</span>
     </div>
   </div>
   <p>{{ entry.title }}</p>
