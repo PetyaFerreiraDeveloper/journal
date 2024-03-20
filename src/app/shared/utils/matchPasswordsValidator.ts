@@ -9,7 +9,6 @@ export function matchPasswordsValidator(
     const confirmPasswordControl = control.get(confirmPassControlName);
     const areMatching =
       passwordControl?.value === confirmPasswordControl?.value;
-    console.log({ areMatching });
 
     return areMatching ? null : { matchPasswordsValidator: true };
   };
