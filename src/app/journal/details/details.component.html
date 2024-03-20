@@ -1,6 +1,9 @@
 <app-loader *ngIf="isLoading" />
 
-<section class="border-2 rounded-2xl flex flex-col gap-y-3 p-5 bg-white" *ngIf="!isLoading">
+<section
+  class="border-2 rounded-2xl flex flex-col gap-y-3 p-5 bg-white"
+  *ngIf="!isLoading"
+>
   <h1 class="text-center">Journal Entry Details</h1>
 
   <app-entry-details [currentEntry]="currentEntry" />
@@ -20,7 +23,19 @@
     >
       <!-- <Button nav={`/entry/${journalEntry._id}/edit`} label={"Edit"}
        />  -->
-      <a routerLink="" class="bg-orange-400 border-orange-500">Edit</a>
+
+      <a
+        [routerLink]="'/' + 'my-journal/' + currentEntry._id + '/edit'"
+        class="bg-orange-400 border-orange-500"
+        *ngIf="!currentEntry.blog"
+        >Edit</a
+      >
+      <a
+        [routerLink]="'/' + 'blog/' + currentEntry._id + '/edit'"
+        class="bg-orange-400 border-orange-500"
+        *ngIf="currentEntry.blog"
+        >Edit</a
+      >
       <a class="bg-orange-400 border-orange-500">Delete</a>
       <!-- <Button
       nav={`/delete/${journalEntry._id}`} label={"Delete"}

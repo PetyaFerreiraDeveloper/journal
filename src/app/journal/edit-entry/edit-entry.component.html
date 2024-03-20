@@ -1,0 +1,88 @@
+<form
+  class="min-w-[350px] md:w-[500px] flex flex-col justify-center border-2 gap-y-6 py-20 md:px-6 bg-white mt-20"
+  [formGroup]="form"
+  (ngSubmit)="saveEntryHandler()"
+>
+  <div class="flex gap-x-3 border-b-2">
+    <label htmlFor="title">Title:</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      placeholder="Entry Title..."
+      class="outline-hidden focus:outline-none w-full"
+      formControlName="title"
+    />
+  </div>
+  <!-- <ng-container *ngIf="titleInput.touched">
+    <p class="text-red-500" *ngIf="titleInput.errors?.['required']">
+      Title is required
+    </p>
+    <p class="text-red-500" *ngIf="titleInput.errors?.['minlength']">
+      Title should be at least three characters long
+    </p>
+  </ng-container> -->
+  <div class="flex gap-x-3 border-b-2">
+    <label htmlFor="category">Category:</label>
+    <input
+      type="text"
+      id="category"
+      name="category"
+      placeholder="Fun"
+      class="outline-hidden focus:outline-none w-full"
+      formControlName="category"
+    />
+  </div>
+  <div class="flex gap-x-3 border-b-2">
+    <label htmlFor="blog">Share this record on the Blog: </label>
+    <input
+      type="checkbox"
+      name="blog"
+      id="blog"
+      class="w-5"
+      formControlName="blog"
+      (change)="isChecked()"
+    />
+  </div>
+
+  <div class="flex gap-x-3 border-b-2" *ngIf="true">
+    <label htmlFor="authorName">Author Name: </label>
+    <input
+      type="text"
+      id="authorName"
+      name="authorName"
+      placeholder="Name..."
+      class="max-w-[135px] focus:outline-none"
+      formControlName="authorName"
+    />
+  </div>
+
+  <textarea
+    name="journalEntry"
+    id="journalEntry"
+    placeholder="Start your entry today"
+    rows="9"
+    class="border-2 w-full focus:outline-none"
+    formControlName="journalEntry"
+  ></textarea>
+  <ng-container>
+    <p class="text-red-500">Text is required</p>
+    <p class="text-red-500">
+      Your journal entry should be at least three characters long
+    </p>
+  </ng-container>
+
+  <div class="flex gap-4 self-end">
+    <button
+      class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
+    >
+      Save
+    </button>
+    <button
+      class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
+      (click)="backHandler($event)"
+    >
+      Cancel
+    </button>
+  </div>
+</form>

@@ -5,6 +5,7 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { CreateEntryComponent } from './create-entry/create-entry.component';
 import { DetailsComponent } from './details/details.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { EditEntryComponent } from './edit-entry/edit-entry.component';
 
 const routes: Route[] = [
   {
@@ -18,8 +19,17 @@ const routes: Route[] = [
       },
       {
         path: ':journalId',
-        component: DetailsComponent,
-        canActivate: [AuthGuard],
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            component: DetailsComponent,
+          },
+          {
+            path: 'edit',
+            component: EditEntryComponent,
+          },
+        ],
       },
     ],
   },
@@ -33,7 +43,10 @@ const routes: Route[] = [
       },
       {
         path: ':blogId',
-        component: DetailsComponent,
+        children: [
+          { path: '', pathMatch: 'full', component: DetailsComponent },
+          { path: 'edit', component: EditEntryComponent },
+        ],
       },
     ],
   },

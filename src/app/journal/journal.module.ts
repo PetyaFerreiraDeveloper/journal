@@ -9,7 +9,8 @@ import { JournalRoutingModule } from './journal-routing.module';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogEntryComponent } from './blog-entry/blog-entry.component';
 import { EntryDetailsComponent } from './entry-details/entry-details.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditEntryComponent } from './edit-entry/edit-entry.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +21,16 @@ import { FormsModule } from '@angular/forms';
     BlogListComponent,
     BlogEntryComponent,
     EntryDetailsComponent,
+    EditEntryComponent,
   ],
-  imports: [CommonModule, SharedModule, FormsModule, JournalRoutingModule],
+
+  imports: [
+    CommonModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    JournalRoutingModule,
+  ],
   exports: [JournalListComponent, JournalEntryComponent],
 })
 export class JournalModule {}
