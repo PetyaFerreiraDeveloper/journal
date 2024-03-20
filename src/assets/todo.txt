@@ -60,6 +60,7 @@ STYLING
 
 Components:
 [] - create button component to be used throughout the app
+[] - add view password functionality
 
 ActiveGuards:
 [x] Guard for My-Journal page

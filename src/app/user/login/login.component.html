@@ -18,7 +18,7 @@
         #emailInput="ngModel"
         required
         minlength="5"
-        [appEmail]="['gmail.com', 'hotmail.com', 'abv.bg']"
+        [appEmail]="domains"
         [ngClass]="
           emailInput.errors && emailInput.touched
             ? 'border-l-red-400'
@@ -70,6 +70,8 @@
 
   <button
     class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
+    [disabled]="form.invalid"
+    [ngClass]="{'bg-slate-400 border-slate-500 cursor-not-allowed': form.invalid}"
   >
     Login
   </button>
