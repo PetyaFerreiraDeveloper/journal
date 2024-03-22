@@ -6,13 +6,17 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable, Provider } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { ErrorService } from './services/error.service';
+import { Router } from '@angular/router';
 
 const { apiUrl } = environment;
 
 @Injectable()
 class AppInterceptor implements HttpInterceptor {
+  constructor(private errorService: ErrorService, private router: Router) {}
+
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -23,7 +27,17 @@ class AppInterceptor implements HttpInterceptor {
         withCredentials: true,
       });
     }
-    return next.handle(req);
+    return next.handle(req).pipe(
+      // catchError((err) => {
+      //   if (err.status === 401) {
+      //     this.router.navigate(['/auth/login']);
+      //   } else {
+      //     this.errorService.setError(err);
+      //     // this.router.navigate(['/error']);
+      //   }
+      //   return [err];
+      // })
+    );
   }
 }
 

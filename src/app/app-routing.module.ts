@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ErrorComponent } from './core/error/error.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -13,6 +14,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('../app/user/user.module').then((m) => m.UserModule),
   },
+  { path: 'error', component: ErrorComponent },
   {
     path: '**',
     redirectTo: '/not-found',
