@@ -49,4 +49,24 @@ export class JournalService {
       options
     );
   }
+
+  edit$(
+    journalEntryId: string,
+    journalEntry: JournalEntry
+  ): Observable<JournalEntry> {
+    const localStorageUser = localStorage.getItem(this.USER_KEY) || '';
+    const user = JSON.parse(localStorageUser);
+    const accessToken = user.accessToken;
+
+    const headers = new HttpHeaders({
+      'X-Authorization': accessToken,
+      'Content-Type': 'application/json',
+    });
+    const options = { headers };
+    return this.httpClient.put<JournalEntry>(
+      `${this.apiUrl}/${journalEntryId}`,
+      journalEntry,
+      options
+    );
+  }
 }

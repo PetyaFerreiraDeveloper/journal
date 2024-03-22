@@ -59,9 +59,11 @@ export class EditEntryComponent implements OnInit {
   }
 
   saveEntryHandler(): void {
-    // if (this.form.invalid) return;
-    // console.log(this.form.value);
+    if (this.form.invalid) return;
+    this.journalService
+      .edit$(this.currentEntry._id, this.form.value)
+      .subscribe();
 
-    this.entryDetails = this.form.value as { title: string; category: string };
+    this.location.back();
   }
 }
