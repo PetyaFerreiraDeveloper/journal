@@ -90,6 +90,10 @@
   <div class="flex gap-4 self-end">
     <button
       class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
+      [disabled]="form.invalid"
+      [ngClass]="{
+        'bg-slate-400 border-slate-500 cursor-not-allowed': form.invalid
+      }"
     >
       Save
     </button>
