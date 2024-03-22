@@ -43,11 +43,10 @@
       id="blog"
       class="w-5"
       formControlName="blog"
-      (change)="isChecked()"
     />
   </div>
 
-  <div class="flex gap-x-3 border-b-2" *ngIf="true">
+  <div class="flex gap-x-3 border-b-2" *ngIf="form.value.blog">
     <label htmlFor="authorName">Author Name: </label>
     <input
       type="text"
