@@ -69,4 +69,19 @@ export class JournalService {
       options
     );
   }
+
+  delete$(journalEntryId: string): Observable<JournalEntry> {
+    const localStorageUser = localStorage.getItem(this.USER_KEY) || '';
+    const user = JSON.parse(localStorageUser);
+    const accessToken = user.accessToken;
+
+    const headers = new HttpHeaders({
+      'X-Authorization': accessToken,
+    });
+    const options = { headers };
+    return this.httpClient.delete<JournalEntry>(
+      `${this.apiUrl}/${journalEntryId}`,
+      options
+    );
+  }
 }

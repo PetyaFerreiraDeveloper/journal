@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JournalService } from 'src/app/services/journal.service';
 import { UserService } from 'src/app/services/user.service';
 import { JournalEntry } from 'src/app/types/journal';
@@ -28,7 +28,8 @@ export class DetailsComponent implements OnInit {
     private location: Location,
     private route: ActivatedRoute,
     private userService: UserService,
-    private journalService: JournalService
+    private journalService: JournalService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -50,5 +51,15 @@ export class DetailsComponent implements OnInit {
 
   backHandler(): void {
     this.location.back();
+  }
+
+  deleteEntryHandler(): void {
+    this.journalService.delete$(this.currentEntry._id).subscribe(() => {
+      if (this.currentEntry.blog) {
+        this.router.navigate(['/blog']);
+      } else {
+        this.router.navigate(['/my-journal']);
+      }
+    });
   }
 }
