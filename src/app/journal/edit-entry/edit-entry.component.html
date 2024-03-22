@@ -12,16 +12,18 @@
       placeholder="Entry Title..."
       class="outline-hidden focus:outline-none w-full"
       formControlName="title"
+      required
+      minlength="5"
     />
   </div>
-  <!-- <ng-container *ngIf="titleInput.touched">
-    <p class="text-red-500" *ngIf="titleInput.errors?.['required']">
+  <ng-container *ngIf="form.get('title')?.touched">
+    <p class="text-red-500" *ngIf="form.get('title')?.errors?.['required']">
       Title is required
     </p>
-    <p class="text-red-500" *ngIf="titleInput.errors?.['minlength']">
+    <p class="text-red-500" *ngIf="form.get('title')?.errors?.['minlength']">
       Title should be at least three characters long
     </p>
-  </ng-container> -->
+  </ng-container>
   <div class="flex gap-x-3 border-b-2">
     <label htmlFor="category">Category:</label>
     <input
@@ -64,11 +66,25 @@
     rows="9"
     class="border-2 w-full focus:outline-none"
     formControlName="journalEntry"
+    required
+    minlength="5"
   ></textarea>
-  <ng-container>
-    <p class="text-red-500">Text is required</p>
-    <p class="text-red-500">
-      Your journal entry should be at least three characters long
+  <ng-container *ngIf="form.get('journalEntry')?.touched">
+    <p
+      class="text-red-500"
+      *ngIf="form.get('journalEntry')?.errors?.['required']"
+    >
+      Text is required
+    </p>
+    <p
+      class="text-red-500"
+      *ngIf="form.get('journalEntry')?.errors?.['minlength']"
+    >
+      Your journal entry should be at least
+      {{form.get('journalEntry')?.errors?.['minlength']?.['requiredLength']}}
+      characters long, but there are only
+      {{form.get('journalEntry')?.errors?.['minlength']?.['actualLength']}}
+      characters in the field.
     </p>
   </ng-container>
 
