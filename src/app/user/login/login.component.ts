@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  loginError: string | undefined;
   domains: string[] = EMAIL_DOMAINS;
   constructor(private userService: UserService, private router: Router) {}
 
@@ -19,8 +20,14 @@ export class LoginComponent {
     const { email, password } = form.value;
 
     // TODO show error message if email or password is incorrect
-    this.userService.login$(email, password).subscribe((data) => {
-      this.router.navigate(['/my-journal']);
+    this.userService.login$(email, password).subscribe({
+      next: () => {
+        this.router.navigate(['/my-journal']);
+      },
+      error: (error) => {
+        this.loginError = error.error.message;
+        throw new Error(error.error.message);
+      },
     });
   }
 }

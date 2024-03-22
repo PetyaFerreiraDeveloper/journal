@@ -25,8 +25,8 @@ FUNCTIONALITY
 [] - on create of a blog direct me to the blog page otherwise to journal page
 [x] - deploy on Vercel
 [] - make the deployment work with the service - check env variables route to service when in production
-[] - show error message on login page if email or password is incorrect and server returns an error
-[] - show error message on register page if user already exists and server returns an error
+[x] - show error message on login page if email or password is incorrect and server returns an error
+[x] - show error message on register page if user already exists and server returns an error
 [] - implement the mobileNavbar
  
 CONTENT

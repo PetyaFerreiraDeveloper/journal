@@ -67,11 +67,16 @@
       </p>
     </ng-container>
   </div>
+  <ng-container *ngIf="loginError">
+    <p class="text-red-500">{{ loginError }}</p>
+  </ng-container>
 
   <button
     class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
     [disabled]="form.invalid"
-    [ngClass]="{'bg-slate-400 border-slate-500 cursor-not-allowed': form.invalid}"
+    [ngClass]="{
+      'bg-slate-400 border-slate-500 cursor-not-allowed': form.invalid
+    }"
   >
     Login
   </button>
