@@ -1,31 +1,32 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { LoginAuthUser, RegisterAuthUser } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class UserService implements OnDestroy {
+  private user$$ = new BehaviorSubject<LoginAuthUser | undefined>(undefined);
+  private user$ = this.user$$.asObservable();
+
   apiUrl = environment.apiUrl;
   authUrl = environment.authUrl;
 
   USER_KEY = '[user]';
   user: LoginAuthUser | undefined;
 
-  loginUser = {
-    firstName: 'Peter',
-    lastName: 'Petrov',
-    email: 'peter@abv.bg',
-    password: '123456',
-  };
+  userSubscription: Subscription;
 
   get isLogged(): boolean {
     return !!this.user;
   }
 
   constructor(private httpClient: HttpClient) {
+    this.userSubscription = this.user$.subscribe((user) => {
+      this.user = user;
+    });
     try {
       // get user from local storage if there is one
       const localStorageUser = localStorage.getItem(this.USER_KEY) || '';
@@ -39,7 +40,9 @@ export class UserService {
     this.user = undefined;
     // delete the user from local storage
     localStorage.removeItem(this.USER_KEY);
-    return this.httpClient.post(`${this.authUrl}/logout`, {});
+    return this.httpClient
+      .post(`${this.authUrl}/logout`, {})
+      .pipe(tap((user) => this.user$$.next(undefined)));
   }
 
   login$(email: string, password: string): Observable<any> {
@@ -50,6 +53,7 @@ export class UserService {
       })
       .pipe(
         tap((responseUser) => {
+          this.user$$.next(responseUser);
           this.user = responseUser;
           // Store the updated user in local storage
           localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
@@ -65,6 +69,11 @@ export class UserService {
       })
       .pipe(
         tap((response) => {
+          this.user$$.next({
+            email: response.email,
+            accessToken: response.accessToken,
+            _id: response._id,
+          });
           this.user = {
             email: response.email,
             accessToken: response.accessToken,
@@ -73,5 +82,9 @@ export class UserService {
           localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
         })
       );
+  }
+
+  ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
   }
 }
