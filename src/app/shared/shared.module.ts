@@ -4,6 +4,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { EntryLabelComponent } from './entry-label/entry-label.component';
 import { NoEntriesComponent } from './no-entries/no-entries.component';
 import { EmailDirective } from './validators/email.directive';
+import { SlicePipe } from './pipes/slice.pipe';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { EmailDirective } from './validators/email.directive';
     EntryLabelComponent,
     NoEntriesComponent,
     EmailDirective,
+    SlicePipe,
   ],
   imports: [CommonModule],
   exports: [
@@ -18,6 +20,7 @@ import { EmailDirective } from './validators/email.directive';
     EntryLabelComponent,
     NoEntriesComponent,
     EmailDirective,
+    SlicePipe,
   ],
 })
 export class SharedModule {}

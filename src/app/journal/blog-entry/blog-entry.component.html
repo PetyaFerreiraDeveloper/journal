@@ -13,7 +13,7 @@
       <span *ngIf="!entry.authorName">Anonymous</span>
     </div>
   </div>
-  <p>{{ entry.title }}</p>
+  <p>{{ entry.title | slice : 10}}</p>
   <a
     [routerLink]="entry._id"
     class="px-8 py-2 text-white bg-orange-400 rounded-lg self-end"
