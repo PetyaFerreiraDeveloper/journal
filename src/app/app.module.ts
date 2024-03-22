@@ -20,7 +20,6 @@ import { appInterceptorProvider } from './app.interceptor';
     HttpClientModule,
     CoreModule,
     SharedModule,
-    UserModule,
     JournalModule,
     AppRoutingModule,
     FormsModule

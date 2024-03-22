@@ -9,6 +9,11 @@ const routes: Routes = [
   { path: 'home', pathMatch: 'full', component: HomeComponent },
   { path: 'about-us', component: AboutComponent },
   {
+    path: 'auth',
+    loadChildren: () =>
+      import('../app/user/user.module').then((m) => m.UserModule),
+  },
+  {
     path: '**',
     redirectTo: '/not-found',
   },

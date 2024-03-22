@@ -17,12 +17,12 @@
   </nav>
 
   <div class="hidden lg:flex items-center gap-4" *ngIf="!isLogged">
-    <a routerLink="/login">Login</a>
-    <a routerLink="/register">Register</a>
+    <a routerLink="/auth/login">Login</a>
+    <a routerLink="/auth/register">Register</a>
   </div>
   <div class="hidden lg:flex items-center gap-4" *ngIf="isLogged">
     <p>Hello {{ email }}</p>
-    <a routerLink="/logout">Logout</a>
+    <a routerLink="/auth/logout">Logout</a>
   </div>
   <button class="lg:hidden align-middle">
     <svg

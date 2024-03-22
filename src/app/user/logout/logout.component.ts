@@ -17,7 +17,7 @@ export class LogoutComponent {
 
   logoutHandler() {
     this.userService.logout$().subscribe({
-      next: () => this.router.navigate(['/login']),
+      next: () => this.router.navigate(['/auth/login']),
       error: (err) => console.error(err),
     });
   }
