@@ -15,9 +15,11 @@ export class LogoutComponent {
     private location: Location
   ) {}
 
-  logoutHandler(): void {
-    this.userService.logout();
-    this.router.navigate(['/']);
+  logoutHandler() {
+    this.userService.logout$().subscribe({
+      next: () => this.router.navigate(['/login']),
+      error: (err) => console.error(err),
+    });
   }
 
   backHandler(): void {

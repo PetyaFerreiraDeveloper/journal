@@ -25,7 +25,6 @@ export class UserService {
     return !!this.user;
   }
 
-
   constructor(private httpClient: HttpClient) {
     try {
       // get user from local storage if there is one
@@ -36,10 +35,11 @@ export class UserService {
     }
   }
 
-  logout(): void {
+  logout$() {
     this.user = undefined;
     // delete the user from local storage
     localStorage.removeItem(this.USER_KEY);
+    return this.httpClient.post(`${this.authUrl}/logout`, {});
   }
 
   login$(email: string, password: string): Observable<any> {
