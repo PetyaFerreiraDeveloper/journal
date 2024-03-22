@@ -7,14 +7,14 @@ import { HomeComponent } from './home/home.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { JournalModule } from './journal/journal.module';
-import { ErrorComponent } from './error/error.component';
 import { AboutComponent } from './about/about.component';
 import { FormsModule } from '@angular/forms';
 import { appInterceptorProvider } from './app.interceptor';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ErrorComponent, AboutComponent, AuthenticateComponent],
+  declarations: [AppComponent, HomeComponent, AboutComponent, AuthenticateComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

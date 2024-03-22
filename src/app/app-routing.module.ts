@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { ErrorComponent } from './error/error.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'not-found',
-    component: ErrorComponent,
+    component: NotFoundComponent,
   },
 ];
 
