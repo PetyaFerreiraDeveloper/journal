@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { JournalService } from 'src/app/services/journal.service';
 import { Location } from '@angular/common';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JournalEntry } from 'src/app/types/journal';
 import { ActivatedRoute } from '@angular/router';
 
@@ -11,14 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit-entry.component.css'],
 })
 export class EditEntryComponent implements OnInit {
-  @ViewChild('blogCheckbox') blogCheckbox: any;
   currentEntry: JournalEntry = {} as JournalEntry;
-
-  // blogChecked: boolean = this.blogCheckbox.control.value
-
-  isChecked() {
-    console.log(this.form.value.blog);
-  }
 
   entryDetails: { title: string; category: string } = {
     title: 'new title',
@@ -33,9 +26,6 @@ export class EditEntryComponent implements OnInit {
     private location: Location,
     private route: ActivatedRoute
   ) {
-    const { title, category, blog, authorName, journalEntry } =
-      this.currentEntry;
-
     this.createForm({
       ...this.currentEntry,
     });
@@ -53,16 +43,13 @@ export class EditEntryComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((data) => {
-      console.log('dtaø', data);
-
       const entryId = data['journalId'] || data['blogId'];
-      this.journalService
-        .getOne$(entryId)
-        .subscribe((entry) => {
-          this.createForm({
-            ...entry,
-          });
+      this.journalService.getOne$(entryId).subscribe((entry) => {
+        this.createForm({
+          ...entry,
         });
+        this.currentEntry = entry;
+      });
     });
   }
 
@@ -73,7 +60,7 @@ export class EditEntryComponent implements OnInit {
 
   saveEntryHandler(): void {
     // if (this.form.invalid) return;
-    console.log(this.form.value);
+    // console.log(this.form.value);
 
     this.entryDetails = this.form.value as { title: string; category: string };
   }
