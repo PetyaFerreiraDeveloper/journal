@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { JournalService } from 'src/app/services/journal.service';
 import { UserService } from 'src/app/services/user.service';
 import { JournalEntry } from 'src/app/types/journal';
-import { AuthUser } from 'src/app/types/user';
+import { LoginAuthUser } from 'src/app/types/user';
 
 @Component({
   selector: 'app-details',
@@ -15,10 +15,14 @@ export class DetailsComponent implements OnInit {
   currentEntry: JournalEntry = {} as JournalEntry;
   isLoading: boolean = true;
 
-  user: AuthUser = {} as AuthUser;
+  user: LoginAuthUser = {} as LoginAuthUser;
   showEditButtons: boolean = false;
   ownerId: string = '';
   loggedUserId: string = '';
+
+  get loggedUser(): LoginAuthUser | undefined {
+    return this.userService.user;
+  }
 
   constructor(
     private location: Location,
@@ -38,10 +42,10 @@ export class DetailsComponent implements OnInit {
       });
     });
 
-    this.userService.login$().subscribe((data: AuthUser) => {
-      this.user = data;
-      this.loggedUserId = data._id;
-    });
+    if (this.loggedUser) {
+      this.user = this.loggedUser;
+      this.loggedUserId = this.loggedUser._id;
+    }
   }
 
   backHandler(): void {

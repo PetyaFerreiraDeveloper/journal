@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { AuthUser, LoginUser, User } from '../types/user';
+import { LoginAuthUser, RegisterAuthUser } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class UserService {
   authUrl = environment.authUrl;
 
   USER_KEY = '[user]';
-  user: User | undefined;
+  user: LoginAuthUser | undefined;
 
   loginUser = {
     firstName: 'Peter',
@@ -24,6 +24,7 @@ export class UserService {
   get isLogged(): boolean {
     return !!this.user;
   }
+
 
   constructor(private httpClient: HttpClient) {
     try {
@@ -41,27 +42,36 @@ export class UserService {
     localStorage.removeItem(this.USER_KEY);
   }
 
-  login$(): Observable<any> {
-    this.user = this.loginUser;
-
-    // save the user in local storage
-    localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
-
-    return this.httpClient.post<LoginUser>(`${this.authUrl}/login`, {
-      email: this.loginUser.email,
-      password: this.loginUser.password,
-    });
+  login$(email: string, password: string): Observable<any> {
+    return this.httpClient
+      .post<LoginAuthUser>(`${this.authUrl}/login`, {
+        email,
+        password,
+      })
+      .pipe(
+        tap((responseUser) => {
+          this.user = responseUser;
+          // Store the updated user in local storage
+          localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+        })
+      );
   }
 
-  // register$(): Observable<any> {
-  //   // this.user = this.loginUser;
-
-  //   // save the user in local storage
-  //   // localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
-
-  //   return this.httpClient.post<LoginUser>(`${this.authUrl}/register`, {
-  //     email: 'test24@gmail.com',
-  //     password: '123456',
-  //   });
-  // }
+  register$(email: string, password: string): Observable<any> {
+    return this.httpClient
+      .post<RegisterAuthUser>(`${this.authUrl}/register`, {
+        email,
+        password,
+      })
+      .pipe(
+        tap((response) => {
+          this.user = {
+            email: response.email,
+            accessToken: response.accessToken,
+            _id: response._id,
+          };
+          localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+        })
+      );
+  }
 }

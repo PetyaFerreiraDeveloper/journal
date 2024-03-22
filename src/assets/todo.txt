@@ -27,7 +27,8 @@ FUNCTIONALITY
 [] - make the deployment work with the service - check env variables route to service when in production
 [] - show error message on login page if email or password is incorrect and server returns an error
 [] - show error message on register page if user already exists and server returns an error
-
+[] - implement the mobileNavbar
+ 
 CONTENT
 [] - Home page
 [] - Blog page - if there are no blog posts

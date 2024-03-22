@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EMAIL_DOMAINS } from 'src/app/constants';
 import { UserService } from 'src/app/services/user.service';
-import { AuthUser } from 'src/app/types/user';
 
 @Component({
   selector: 'app-login',
@@ -15,23 +14,13 @@ export class LoginComponent {
   constructor(private userService: UserService, private router: Router) {}
 
   loginHandler(form: NgForm) {
-    console.log('form', form);
-
     if (form.invalid) return;
 
-    // this.userService.login$().subscribe((data: AuthUser) => {
-    //   localStorage.setItem('[user]', JSON.stringify(data));
-    //   this.user = data
-    //   // console.log(data);
-    // });
+    const { email, password } = form.value;
 
-    this.userService.login$();
-
-    // this.userService.register$().subscribe((data: any) => {
-    //   // localStorage.setItem('[user]', JSON.stringify(data));
-    //   console.log(data);
-    // });
-
-    this.router.navigate(['/my-journal']);
+    // TODO show error message if email or password is incorrect
+    this.userService.login$(email, password).subscribe((data) => {
+      this.router.navigate(['/my-journal']);
+    });
   }
 }

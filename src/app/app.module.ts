@@ -11,6 +11,7 @@ import { UserModule } from './user/user.module';
 import { ErrorComponent } from './error/error.component';
 import { AboutComponent } from './about/about.component';
 import { FormsModule } from '@angular/forms';
+import { appInterceptorProvider } from './app.interceptor';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, ErrorComponent, AboutComponent],
@@ -24,7 +25,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [appInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
