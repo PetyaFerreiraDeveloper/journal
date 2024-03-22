@@ -20,7 +20,7 @@ export class CreateEntryComponent {
   constructor(
     private journalService: JournalService,
     private location: Location,
-    private router: Router,
+    private router: Router
   ) {}
 
   backHandler(event: Event): void {
@@ -33,7 +33,11 @@ export class CreateEntryComponent {
 
     const journalEntry = form.value;
     this.journalService.create$(journalEntry).subscribe(() => {
-      this.router.navigate(['/my-journal']);
+      if (journalEntry.blog) {
+        this.router.navigate(['/blog']);
+      } else {
+        this.router.navigate(['/my-journal']);
+      }
     });
   }
 }
