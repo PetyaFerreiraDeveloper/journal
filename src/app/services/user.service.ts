@@ -84,6 +84,14 @@ export class UserService implements OnDestroy {
       );
   }
 
+  getToken(): string {
+    return this.user?.accessToken || '';
+  }
+
+  getUser():any {
+    return this.httpClient.get(`${this.authUrl}/me`)
+  }
+
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }

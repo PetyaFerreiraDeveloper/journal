@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { CreateJournalEntry, JournalEntry } from '../types/journal';
 
@@ -9,6 +9,7 @@ import { CreateJournalEntry, JournalEntry } from '../types/journal';
 })
 export class JournalService {
   apiUrl = environment.apiUrl;
+  USER_KEY = '[user]';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -33,6 +34,19 @@ export class JournalService {
   }
 
   create$(journalEntry: CreateJournalEntry): Observable<CreateJournalEntry> {
-    return this.httpClient.post<CreateJournalEntry>(this.apiUrl, journalEntry);
+    const localStorageUser = localStorage.getItem(this.USER_KEY) || '';
+    const user = JSON.parse(localStorageUser);
+    const accessToken = user.accessToken;
+
+    const headers = new HttpHeaders({
+      'X-Authorization': accessToken,
+      'Content-Type': 'application/json',
+    });
+    const options = { headers };
+    return this.httpClient.post<CreateJournalEntry>(
+      this.apiUrl,
+      journalEntry,
+      options
+    );
   }
 }

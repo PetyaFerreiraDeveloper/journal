@@ -11,6 +11,7 @@ import { BlogEntryComponent } from './blog-entry/blog-entry.component';
 import { EntryDetailsComponent } from './entry-details/entry-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditEntryComponent } from './edit-entry/edit-entry.component';
+import { UserModule } from '../user/user.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { EditEntryComponent } from './edit-entry/edit-entry.component';
     FormsModule,
     ReactiveFormsModule,
     JournalRoutingModule,
+    UserModule
   ],
   exports: [JournalListComponent, JournalEntryComponent],
 })

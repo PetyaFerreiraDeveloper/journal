@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { JournalService } from 'src/app/services/journal.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class CreateEntryComponent {
 
   constructor(
     private journalService: JournalService,
-    private location: Location
+    private location: Location,
+    private router: Router,
   ) {}
 
   backHandler(event: Event): void {
@@ -26,28 +28,12 @@ export class CreateEntryComponent {
     this.location.back();
   }
 
-  createHandler(
-    event: Event,
-    titleInput: string,
-    categoryInput: string,
-    blogChecked: boolean,
-    journalEntry: string
-  ): void {
-    event.preventDefault();
-
-    const entry = {
-      title: titleInput,
-      category: categoryInput,
-      journalEntry: journalEntry,
-      blog: blogChecked,
-    };
-    console.log(entry);
-
-    this.journalService.create$(entry).subscribe((data) => console.log(data));
-  }
-
   addEntry(form: NgForm) {
     if (form.invalid) return;
-    console.log(form.value);
+
+    const journalEntry = form.value;
+    this.journalService.create$(journalEntry).subscribe(() => {
+      this.router.navigate(['/my-journal']);
+    });
   }
 }

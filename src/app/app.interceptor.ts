@@ -10,12 +10,17 @@ import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { ErrorService } from './services/error.service';
 import { Router } from '@angular/router';
+import { UserService } from './services/user.service';
 
 const { apiUrl } = environment;
 
 @Injectable()
 class AppInterceptor implements HttpInterceptor {
-  constructor(private errorService: ErrorService, private router: Router) {}
+  constructor(
+    private errorService: ErrorService,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -24,10 +29,11 @@ class AppInterceptor implements HttpInterceptor {
     if (req.url.startsWith('/api')) {
       req = req.clone({
         url: req.url.replace('/api', apiUrl),
-        withCredentials: true,
       });
     }
-    return next.handle(req).pipe(
+    return next
+      .handle(req)
+      .pipe
       // catchError((err) => {
       //   if (err.status === 401) {
       //     this.router.navigate(['/auth/login']);
@@ -37,7 +43,7 @@ class AppInterceptor implements HttpInterceptor {
       //   }
       //   return [err];
       // })
-    );
+      ();
   }
 }
 
