@@ -12,6 +12,7 @@ import { validateEmail } from 'src/app/shared/utils/validateEmailUtil';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  registerError: string | undefined;
   form = this.formBuilder.group({
     email: ['', [Validators.required, validateEmail(EMAIL_DOMAINS)]],
     passGroup: this.formBuilder.group(
@@ -44,8 +45,14 @@ export class RegisterComponent {
     if (password !== confirmPass) {
       return;
     }
-    this.userService.register$(email!, password!).subscribe(() => {
-      this.router.navigate(['/my-journal']);
+    this.userService.register$(email!, password!).subscribe({
+      next: () => {
+        this.router.navigate(['/my-journal']);
+      },
+      error: (error) => {
+        this.registerError = error.error.message;
+        throw new Error(error.error.message);
+      },
     });
   }
 }
