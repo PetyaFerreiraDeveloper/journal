@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JournalService } from '../../services/journal.service';
 import { JournalEntry } from '../../types/journal';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-journal-list',
@@ -10,10 +11,11 @@ import { JournalEntry } from '../../types/journal';
 export class JournalListComponent implements OnInit {
   journalEntries: JournalEntry[] = [];
   isLoading: boolean = true;
-  constructor(private journalService: JournalService) {}
+  constructor(private journalService: JournalService, private userService: UserService) {}
 
   ngOnInit(): void {
-    this.journalService.getAllJournals$().subscribe({
+    const ownerId = this.userService.user?._id || '';
+    this.journalService.getAllByOwner$(ownerId).subscribe({
       next: (journals) => {
         this.journalEntries = journals;
         this.isLoading = false;
