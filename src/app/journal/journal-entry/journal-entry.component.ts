@@ -7,6 +7,5 @@ import { JournalEntry } from '../../types/journal';
   styleUrls: ['./journal-entry.component.css'],
 })
 export class JournalEntryComponent {
-  // @Input() entry: JournalEntry | undefined;
   @Input('entry') entry = {} as JournalEntry;
 }
