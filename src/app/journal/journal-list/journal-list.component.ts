@@ -11,12 +11,18 @@ import { UserService } from 'src/app/services/user.service';
 export class JournalListComponent implements OnInit {
   journalEntries: JournalEntry[] = [];
   isLoading: boolean = true;
-  constructor(private journalService: JournalService, private userService: UserService) {}
+  constructor(
+    private journalService: JournalService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     const ownerId = this.userService.user?._id || '';
     this.journalService.getAllByOwner$(ownerId).subscribe({
       next: (journals) => {
+        journals.sort((a, b) => {
+          return b._createdOn - a._createdOn;
+        });
         this.journalEntries = journals;
         this.isLoading = false;
       },
