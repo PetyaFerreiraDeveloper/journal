@@ -9,30 +9,72 @@
     />
   </a>
   <nav class="hidden lg:flex items-center gap-4">
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-      true}" class="p-2 rounded-lg">Home</a>
-    <a routerLink="/blog" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-      true}" class="p-2 rounded-lg">Blog</a>
-    <a routerLink="/my-journal" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-      true}" *ngIf="isLogged" class="p-2 rounded-lg">My Journal</a>
-    <a routerLink="/create-entry" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-      true}" *ngIf="isLogged" class="p-2 rounded-lg">Create</a>
-    <a routerLink="/about-us" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-      true}" class="p-2 rounded-lg">About us</a>
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="p-2 rounded-lg"
+      >Home</a
+    >
+    <a
+      routerLink="/blog"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="p-2 rounded-lg"
+      >Blog</a
+    >
+    <a
+      routerLink="/my-journal"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      *ngIf="isLogged"
+      class="p-2 rounded-lg"
+      >My Journal</a
+    >
+    <a
+      routerLink="/create-entry"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      *ngIf="isLogged"
+      class="p-2 rounded-lg"
+      >Create</a
+    >
+    <a
+      routerLink="/about-us"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="p-2 rounded-lg"
+      >About us</a
+    >
   </nav>
 
   <div class="hidden lg:flex items-center gap-4" *ngIf="!isLogged">
-    <a routerLink="/auth/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-      true}" class="p-2 rounded-lg">Login</a>
-    <a routerLink="/auth/register" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-      true}" class="p-2 rounded-lg">Register</a>
+    <a
+      routerLink="/auth/login"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="p-2 rounded-lg"
+      >Login</a
+    >
+    <a
+      routerLink="/auth/register"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="p-2 rounded-lg"
+      >Register</a
+    >
   </div>
   <div class="hidden lg:flex items-center gap-4" *ngIf="isLogged">
     <p>Hello {{ email }}</p>
-    <a routerLink="/auth/logout" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-      true}" class="p-2 rounded-lg">Logout</a>
+    <a
+      routerLink="/auth/logout"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="p-2 rounded-lg"
+      >Logout</a
+    >
   </div>
-  <button class="lg:hidden align-middle">
+  <button class="lg:hidden align-middle" (click)="showMobileNav()">
     <svg
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
@@ -43,3 +85,4 @@
     </svg>
   </button>
 </header>
+<app-mobile-nav *ngIf="mobileNav" />

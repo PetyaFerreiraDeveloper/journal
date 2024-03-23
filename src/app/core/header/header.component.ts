@@ -7,6 +7,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+  mobileNav = false;
   constructor(public userService: UserService) {}
 
   get isLogged(): boolean {
@@ -15,5 +16,11 @@ export class HeaderComponent {
 
   get email(): string {
     return this.userService.user?.email || '';
+  }
+
+  showMobileNav():void {
+    console.log('clicked');
+    
+    this.mobileNav = !this.mobileNav;
   }
 }
