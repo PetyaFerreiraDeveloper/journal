@@ -5,6 +5,7 @@ import { EntryLabelComponent } from './entry-label/entry-label.component';
 import { NoEntriesComponent } from './no-entries/no-entries.component';
 import { EmailDirective } from './validators/email.directive';
 import { SlicePipe } from './pipes/slice.pipe';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { SlicePipe } from './pipes/slice.pipe';
     NoEntriesComponent,
     EmailDirective,
     SlicePipe,
+    ConfirmModalComponent,
   ],
   imports: [CommonModule],
   exports: [
@@ -21,6 +23,7 @@ import { SlicePipe } from './pipes/slice.pipe';
     NoEntriesComponent,
     EmailDirective,
     SlicePipe,
+    ConfirmModalComponent
   ],
 })
 export class SharedModule {}
