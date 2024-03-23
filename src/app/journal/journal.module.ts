@@ -7,7 +7,6 @@ import { CreateEntryComponent } from './create-entry/create-entry.component';
 import { DetailsComponent } from './details/details.component';
 import { JournalRoutingModule } from './journal-routing.module';
 import { BlogListComponent } from './blog-list/blog-list.component';
-import { BlogEntryComponent } from './blog-entry/blog-entry.component';
 import { EntryDetailsComponent } from './entry-details/entry-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditEntryComponent } from './edit-entry/edit-entry.component';
@@ -20,7 +19,6 @@ import { UserModule } from '../user/user.module';
     CreateEntryComponent,
     DetailsComponent,
     BlogListComponent,
-    BlogEntryComponent,
     EntryDetailsComponent,
     EditEntryComponent,
   ],

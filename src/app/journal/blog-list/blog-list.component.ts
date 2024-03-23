@@ -16,8 +16,11 @@ export class BlogListComponent implements OnInit {
   ngOnInit(): void {
     this.journalService.getAllBlogs$().subscribe({
       next: (blogs) => {
+        blogs.sort((a, b) => {
+          return b._createdOn - a._createdOn;
+        });
         this.blogEntries = blogs;
-        this.isLoading = false
+        this.isLoading = false;
       },
       error: (err) => {
         console.error(err);
