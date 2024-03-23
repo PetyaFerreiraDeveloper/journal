@@ -1,8 +1,6 @@
-<app-loader *ngIf="isLoading" />
-
 <section
   class="border-2 rounded-2xl flex flex-col gap-y-3 p-5 bg-white"
-  *ngIf="!isLoading"
+  *ngIf="!showDeleteModal"
 >
   <h1 class="text-center">Journal Entry Details</h1>
 
@@ -33,9 +31,32 @@
         *ngIf="currentEntry.blog"
         >Edit</a
       >
-      <a class="bg-orange-400 border-orange-500" (click)="deleteEntryHandler()"
+      <a class="bg-orange-400 border-orange-500" (click)="toggleModal()"
         >Delete</a
       >
     </div>
   </div>
 </section>
+
+<section
+  *ngIf="showDeleteModal"
+  class="flex flex-col border-2 m-auto gap-y-10 px-6 py-20 bg-white w-[320px] rounded-2xl mt-20"
+>
+  <h2>Are you sure you want to delete the article?</h2>
+  <div class="flex gap-x-3">
+    <button
+      class="bg-red-500 text-white px-3 py-1 rounded-full"
+      (click)="deleteEntryHandler()"
+    >
+      Yes
+    </button>
+    <button
+      class="bg-green-500 text-white px-3 py-1 rounded-full"
+      (click)="toggleModal()"
+    >
+      No
+    </button>
+  </div>
+</section>
+
+

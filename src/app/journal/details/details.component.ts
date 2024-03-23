@@ -12,6 +12,7 @@ import { LoginAuthUser } from 'src/app/types/user';
   styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
+  showDeleteModal: boolean = false;
   currentEntry: JournalEntry = {} as JournalEntry;
   isLoading: boolean = true;
 
@@ -62,4 +63,12 @@ export class DetailsComponent implements OnInit {
       }
     });
   }
+
+  toggleModal(): void {
+    console.log('toggle clicked');
+
+    this.showDeleteModal = !this.showDeleteModal;
+  }
+
+
 }
