@@ -6,8 +6,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ErrorComponent } from './core/error/error.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/home' },
-  { path: 'home', pathMatch: 'full', component: HomeComponent },
+  { path: '', pathMatch: 'full', component: HomeComponent},
+  // { path: 'home', pathMatch: 'full', component: HomeComponent },
   { path: 'about-us', component: AboutComponent },
   {
     path: 'auth',
