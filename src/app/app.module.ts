@@ -9,7 +9,6 @@ import { SharedModule } from './shared/shared.module';
 import { JournalModule } from './journal/journal.module';
 import { AboutComponent } from './about/about.component';
 import { FormsModule } from '@angular/forms';
-import { appInterceptorProvider } from './app.interceptor';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -24,7 +23,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [appInterceptorProvider],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
