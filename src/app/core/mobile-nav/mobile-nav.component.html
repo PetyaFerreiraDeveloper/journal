@@ -1,0 +1,31 @@
+<nav
+  class="lg:hidden flex flex-col items-start gap-4 fixed top:16 lg:top-20 right-0 z-10 text-white bg-slate-800 w-60 p-5 rounded-bl-lg "
+>
+  <a
+    routerLink="/"
+    routerLinkActive="active"
+    class="p-2 rounded-lg"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Home</a
+  >
+  <a routerLink="/blog" routerLinkActive="active" class="p-2 rounded-lg"
+    >Blog</a
+  >
+  <a
+    routerLink="/my-journal"
+    routerLinkActive="active"
+    *ngIf="isLogged"
+    class="p-2 rounded-lg"
+    >My Journal</a
+  >
+  <a
+    routerLink="/create-entry"
+    routerLinkActive="active"
+    *ngIf="isLogged"
+    class="p-2 rounded-lg"
+    >Create</a
+  >
+  <a routerLink="/about-us" routerLinkActive="active" class="p-2 rounded-lg"
+    >About us</a
+  >
+</nav>

@@ -18,9 +18,7 @@ export class HeaderComponent {
     return this.userService.user?.email || '';
   }
 
-  showMobileNav():void {
-    console.log('clicked');
-    
+  toggleMobileNav():void {
     this.mobileNav = !this.mobileNav;
   }
 }

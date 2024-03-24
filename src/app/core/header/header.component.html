@@ -1,5 +1,5 @@
 <header
-  class="px-8 3xl:w-9/12 3xl:m-auto max-w-screen-3xl z-10 text-white bg-slate-800 h-18 md:24 flex justify-between items-center"
+  class="px-4 lg:px-8 3xl:w-9/12 3xl:m-auto max-w-screen-3xl z-10 text-white bg-slate-800 h-18 md:h-24 flex justify-between items-center"
 >
   <a routerLink="/">
     <img
@@ -74,7 +74,7 @@
       >Logout</a
     >
   </div>
-  <button class="lg:hidden align-middle" (click)="showMobileNav()">
+  <button class="lg:hidden align-middle" (click)="toggleMobileNav()" *ngIf="!mobileNav">
     <svg
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
@@ -82,6 +82,17 @@
       class="w-6 h-4 fill-white"
     >
       <path d="M0 0h24.48v2H0zM0 7.47h24.48v2H0zM0 14.54h24.48v2H0z" />
+    </svg>
+  </button>
+  <button *ngIf="mobileNav" class="lg:hidden align-middle" (click)="toggleMobileNav()">
+    <svg
+      class="w-6 h-6 fill-white font-semibold"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 50 50"
+    >
+      <path
+        d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z"
+      />
     </svg>
   </button>
 </header>
