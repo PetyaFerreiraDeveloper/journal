@@ -2,7 +2,7 @@
   class="border-2 rounded-2xl flex flex-col gap-y-3 p-5 md:w-2/3 mx-auto"
   *ngIf="!showDeleteModal"
 >
-  <h1 class="text-center text-xl">Journal Entry Details</h1>
+  <h1 class="text-center text-2xl font-bold">Journal Entry Details</h1>
 
   <app-entry-details [currentEntry]="currentEntry" />
   <div
@@ -21,17 +21,17 @@
     >
       <a
         [routerLink]="'/' + 'my-journal/' + currentEntry._id + '/edit'"
-        class="bg-orange-400 border-orange-500"
+        class="bg-dark-green border-darker-green px-8 py-2 rounded-lg text-white"
         *ngIf="!currentEntry.blog"
         >Edit</a
       >
       <a
         [routerLink]="'/' + 'blog/' + currentEntry._id + '/edit'"
-        class="bg-orange-400 border-orange-500"
+        class="bg-orange-400 border-orange-500 px-8 py-2 rounded-lg"
         *ngIf="currentEntry.blog"
         >Edit</a
       >
-      <a class="bg-orange-400 border-orange-500" (click)="toggleModal()"
+      <a class="bg-orange-400 border-orange-500 px-8 py-2 rounded-lg" (click)="toggleModal()"
         >Delete</a
       >
     </div>
@@ -40,18 +40,18 @@
 
 <section
   *ngIf="showDeleteModal"
-  class="flex flex-col border-2 m-auto gap-y-10 px-6 py-20 bg-white w-[320px] rounded-2xl mt-20"
+  class="flex flex-col border-2 gap-y-10 px-6 py-20 bg-white rounded-2xl mt-20 md:w-2/3 mx-2 md:mx-auto "
 >
-  <h2>Are you sure you want to delete the article?</h2>
-  <div class="flex gap-x-3">
+  <h2 class="text-2xl font-bold">Are you sure you want to delete the article?</h2>
+  <div class="flex gap-x-3 justify-end">
     <button
-      class="bg-red-500 text-white px-3 py-1 rounded-full"
+      class="bg-orange-400 border-orange-500 border-[1px] text-white px-8 py-2 rounded-lg"
       (click)="deleteEntryHandler()"
     >
       Yes
     </button>
     <button
-      class="bg-green-500 text-white px-3 py-1 rounded-full"
+      class="bg-dark-green border-darker-green border-[1px] text-white px-8 py-2 rounded-lg"
       (click)="toggleModal()"
     >
       No

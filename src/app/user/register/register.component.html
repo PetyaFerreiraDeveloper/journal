@@ -1,109 +1,112 @@
-<form
-  class="flex flex-col border-2 rounded-2xl gap-y-6 p-6 bg-white mt-20"
-  [formGroup]="form"
-  (ngSubmit)="register()"
->
-  <h1 class="text-center">Register</h1>
-  <div>
-    <div class="flex gap-x-3 md:gap-x-10 justify-between">
-      <label htmlFor="email">Email:</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="maria@email.com"
-        class="border-2 outline-hidden focus:outline-none"
-        formControlName="email"
-        autocomplete="email"
-      />
-    </div>
-    <ng-container *ngIf="form.get('email')?.touched">
-      <p class="text-red-500" *ngIf="form.get('email')?.errors?.['required']">
-        Email is required
-      </p>
-      <p
-        class="text-red-500"
-        *ngIf="form.get('email')?.errors?.['validateEmail']"
-      >
-        Email is not valid. Expected email domains are:
-        {{form.get('email')?.errors?.['expectedDomains']}}
-      </p>
-    </ng-container>
-  </div>
-  <ng-container formGroupName="passGroup">
-    <div>
-      <div class="flex gap-x-3 md:gap-x-10 justify-between">
-        <label htmlFor="password">Password:</label>
-        <input
-          class="border-2 outline-hidden focus:outline-none"
-          type="password"
-          name="password"
-          id="password"
-          formControlName="password"
-          autocomplete="password"
-        />
-      </div>
-      <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
-        <p
-          class="text-red-500"
-          *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']"
-        >
-          Password is required
-        </p>
-        <p
-          class="text-red-500"
-          *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']"
-        >
-          Password is not valid. It must be at least
-          {{form.get('passGroup')?.get('password')?.errors?.['minlength']['requiredLength']}}
-          characters.
-        </p>
-      </ng-container>
-    </div>
-    <div>
-      <div class="flex gap-x-3 md:gap-x-10 justify-between">
-        <label>Confirm Password:</label>
-        <input
-          type="password"
-          name="confirmPass"
-          id="confirmPass"
-          class="border-2 outline-hidden focus:outline-none"
-          formControlName="confirmPass"
-          autocomplete="confirm-password"
-        />
-      </div>
-      <ng-container *ngIf="passGroup?.get('confirmPass')?.touched">
-        <p
-          class="text-red-500"
-          *ngIf="passGroup?.get('confirmPass')?.errors?.['required']"
-        >
-          Confirm password is required field
-        </p>
-        <p
-          class="text-red-500"
-          *ngIf="passGroup?.errors?.['matchPasswordsValidator']"
-        >
-          Your passwords do not match
-        </p>
-      </ng-container>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="registerError">
-    <p class="text-red-500">{{registerError}}</p>
-  </ng-container>
+<section class="flex flex-col items-center gap-y-10 py-10">
+  <h2 class="text-center font-bold text-4xl">Register</h2>
 
-  <button
-    class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
-    [disabled]="form.invalid"
-    [ngClass]="{
-      'bg-slate-400 border-slate-500 cursor-not-allowed': form.invalid
-    }"
+  <form
+    class="flex flex-col border-2 rounded-2xl gap-y-6 p-6 bg-white"
+    [formGroup]="form"
+    (ngSubmit)="register()"
   >
-    Register
-  </button>
+    <div>
+      <div class="flex gap-x-3 md:gap-x-10 justify-between">
+        <label htmlFor="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="maria@email.com"
+          class="border-2 outline-hidden focus:outline-none"
+          formControlName="email"
+          autocomplete="email"
+        />
+      </div>
+      <ng-container *ngIf="form.get('email')?.touched">
+        <p class="text-red-500" *ngIf="form.get('email')?.errors?.['required']">
+          Email is required
+        </p>
+        <p
+          class="text-red-500"
+          *ngIf="form.get('email')?.errors?.['validateEmail']"
+        >
+          Email is not valid. Expected email domains are:
+          {{form.get('email')?.errors?.['expectedDomains']}}
+        </p>
+      </ng-container>
+    </div>
+    <ng-container formGroupName="passGroup">
+      <div>
+        <div class="flex gap-x-3 md:gap-x-10 justify-between">
+          <label htmlFor="password">Password:</label>
+          <input
+            class="border-2 outline-hidden focus:outline-none"
+            type="password"
+            name="password"
+            id="password"
+            formControlName="password"
+            autocomplete="password"
+          />
+        </div>
+        <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
+          <p
+            class="text-red-500"
+            *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']"
+          >
+            Password is required
+          </p>
+          <p
+            class="text-red-500"
+            *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']"
+          >
+            Password is not valid. It must be at least
+            {{form.get('passGroup')?.get('password')?.errors?.['minlength']['requiredLength']}}
+            characters.
+          </p>
+        </ng-container>
+      </div>
+      <div>
+        <div class="flex gap-x-3 md:gap-x-10 justify-between">
+          <label>Confirm Password:</label>
+          <input
+            type="password"
+            name="confirmPass"
+            id="confirmPass"
+            class="border-2 outline-hidden focus:outline-none"
+            formControlName="confirmPass"
+            autocomplete="confirm-password"
+          />
+        </div>
+        <ng-container *ngIf="passGroup?.get('confirmPass')?.touched">
+          <p
+            class="text-red-500"
+            *ngIf="passGroup?.get('confirmPass')?.errors?.['required']"
+          >
+            Confirm password is required field
+          </p>
+          <p
+            class="text-red-500"
+            *ngIf="passGroup?.errors?.['matchPasswordsValidator']"
+          >
+            Your passwords do not match
+          </p>
+        </ng-container>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="registerError">
+      <p class="text-red-500">{{ registerError }}</p>
+    </ng-container>
 
-  <p class="self-end">
-    <span> If you already have profile </span>
-    <a routerLink="/auth/login" class="text-blue-600"> click here </a>
-  </p>
-</form>
+    <button
+      class="border-[1px] bg-dark-green border-darker-green text-white rounded-lg px-8 py-2 place-self-center"
+      [disabled]="form.invalid"
+      [ngClass]="{
+        'bg-slate-400 border-slate-500 cursor-not-allowed': form.invalid
+      }"
+    >
+      Register
+    </button>
+
+    <p class="self-end">
+      <span> If you already have profile </span>
+      <a routerLink="/auth/login" class="text-blue-600"> click here </a>
+    </p>
+  </form>
+</section>

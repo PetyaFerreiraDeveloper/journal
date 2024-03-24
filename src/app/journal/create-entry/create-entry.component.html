@@ -88,7 +88,7 @@
 
     <div class="flex gap-4 self-end px-2">
       <button
-        class="border-2 bg-dark-green border-darker-green text-white rounded-lg px-8 py-2 place-self-center"
+        class="border-[1px] bg-dark-green border-darker-green text-white rounded-lg px-8 py-2 place-self-center"
         [disabled]="form.invalid"
         [ngClass]="{
           'bg-slate-400 border-slate-500 cursor-not-allowed': form.invalid
@@ -97,7 +97,7 @@
         Create
       </button>
       <button
-        class="border-2 bg-orange-400 border-orange-500 text-white rounded-lg px-8 py-2 place-self-center"
+        class="border-[1px] bg-orange-400 border-orange-500 text-white rounded-lg px-8 py-2 place-self-center"
         (click)="backHandler($event)"
       >
         Cancel

@@ -1,17 +1,30 @@
 <article
   class="flex flex-col justify-center gap-y-4 p-4 w-full border-2 border-gray-600 bg-green-500 rounded-2xl shadow-[0_2px_4px_1px_rgba(190,193,202,0.5)] drop-shadow-xl text-white mt-10"
 >
-  <app-entry-label [label]="currentEntry.blog" />
-  <p class="break-words">Category: {{ currentEntry.category }}</p>
-  <h3 class="break-words">Title: {{ currentEntry.title }}</h3>
-  <p>Created on: {{ currentEntry._createdOn | date }}</p>
+  <app-entry-label [label]="currentEntry.blog" class="self-end" />
+  <p class="break-words">
+    <span class="font-bold"> Category: </span>
+    {{ currentEntry.category }}
+  </p>
+  <h3 class="break-words">
+    <span class="font-bold">Title: </span>
+    {{ currentEntry.title }}
+  </h3>
+  <p>
+    <span class="font-bold">Created on:</span>
+    {{ currentEntry._createdOn | date }}
+  </p>
   <p *ngIf="!!currentEntry.authorName" class="truncate w-48">
-    Author: {{ currentEntry.authorName | titlecase }}
+    <span class="font-bold"> Author: </span>
+    {{ currentEntry.authorName | titlecase }}
   </p>
   <p *ngIf="!!currentEntry._editedOn">
-    Updated on: {{ currentEntry._editedOn | date }}
+    <span class="font-bold">Updated on: </span>
+    {{ currentEntry._editedOn | date }}
   </p>
 
-  <p class="break-words">Journal Entry: {{ currentEntry.journalEntry }}</p>
+  <p class="break-words">
+    <span class="font-bold">Journal Entry: </span>
+    {{ currentEntry.journalEntry }}
+  </p>
 </article>
-
