@@ -1,103 +1,107 @@
-<form
-  class="min-w-[350px] md:w-[500px] flex flex-col justify-center border-2 gap-y-6 py-20 md:px-6 bg-white mt-20"
-  #form="ngForm"
-  (ngSubmit)="addEntry(form)"
->
-  <div class="flex gap-x-3 border-b-2">
-    <label htmlFor="title">Title:</label>
-    <input
-      type="text"
-      id="title"
-      name="title"
-      placeholder="Entry Title..."
-      class="outline-hidden focus:outline-none w-full"
-      #titleInput="ngModel"
+<section class="flex flex-col items-center gap-y-10 py-10">
+  <h2 class="text-center text-4xl font-bold">Create today's entry</h2>
+
+  <form
+    class="min-w-[350px] md:w-[500px] flex flex-col justify-center border-2 gap-y-6 py-20 md:px-6 bg-white mx-auto rounded-lg"
+    #form="ngForm"
+    (ngSubmit)="addEntry(form)"
+  >
+    <div class="flex gap-x-3 border-b-2 px-2">
+      <label htmlFor="title">Title:</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        placeholder="Entry Title..."
+        class="outline-hidden focus:outline-none w-full"
+        #titleInput="ngModel"
+        ngModel
+        required
+        minlength="3"
+      />
+    </div>
+    <ng-container *ngIf="titleInput.touched">
+      <p class="text-red-500" *ngIf="titleInput.errors?.['required']">
+        Title is required
+      </p>
+      <p class="text-red-500" *ngIf="titleInput.errors?.['minlength']">
+        Title should be at least three characters long
+      </p>
+    </ng-container>
+    <div class="flex gap-x-3 border-b-2 px-2">
+      <label htmlFor="category">Category:</label>
+      <input
+        type="text"
+        id="category"
+        name="category"
+        placeholder="Fun"
+        class="outline-hidden focus:outline-none w-full"
+        #categoryInput="ngModel"
+        ngModel
+      />
+    </div>
+    <div class="flex gap-x-3 border-b-2 px-2">
+      <label htmlFor="blog">Share this record on the Blog: </label>
+      <input
+        type="checkbox"
+        name="blog"
+        id="blog"
+        class="w-5"
+        #blogCheckbox="ngModel"
+        ngModel
+        (change)="isChecked()"
+      />
+    </div>
+
+    <div class="flex gap-x-3 border-b-2 px-2" *ngIf="blogChecked">
+      <label htmlFor="authorName">Author Name: </label>
+      <input
+        type="text"
+        id="authorName"
+        name="authorName"
+        placeholder="Name..."
+        class="max-w-[135px] focus:outline-none"
+        ngModel
+        #author="ngModel"
+      />
+    </div>
+
+    <textarea
+      name="journalEntry"
+      id="journalEntry"
+      placeholder="Start your entry today"
+      rows="9"
+      class="border-2 w-full focus:outline-none px-2"
+      #journalEntry="ngModel"
       ngModel
       required
       minlength="3"
-    />
-  </div>
-  <ng-container *ngIf="titleInput.touched">
-    <p class="text-red-500" *ngIf="titleInput.errors?.['required']">
-      Title is required
-    </p>
-    <p class="text-red-500" *ngIf="titleInput.errors?.['minlength']">
-      Title should be at least three characters long
-    </p>
-  </ng-container>
-  <div class="flex gap-x-3 border-b-2">
-    <label htmlFor="category">Category:</label>
-    <input
-      type="text"
-      id="category"
-      name="category"
-      placeholder="Fun"
-      class="outline-hidden focus:outline-none w-full"
-      #categoryInput="ngModel"
-      ngModel
-    />
-  </div>
-  <div class="flex gap-x-3 border-b-2">
-    <label htmlFor="blog">Share this record on the Blog: </label>
-    <input
-      type="checkbox"
-      name="blog"
-      id="blog"
-      class="w-5"
-      #blogCheckbox="ngModel"
-      ngModel
-      (change)="isChecked()"
-    />
-  </div>
+    ></textarea>
+    <ng-container *ngIf="journalEntry.touched">
+      <p class="text-red-500" *ngIf="journalEntry.errors?.['required']">
+        Text is required
+      </p>
+      <p class="text-red-500" *ngIf="journalEntry.errors?.['minlength']">
+        Your journal entry should be at least three characters long
+      </p>
+    </ng-container>
 
-  <div class="flex gap-x-3 border-b-2" *ngIf="blogChecked">
-    <label htmlFor="authorName">Author Name: </label>
-    <input
-      type="text"
-      id="authorName"
-      name="authorName"
-      placeholder="Name..."
-      class="max-w-[135px] focus:outline-none"
-      ngModel
-      #author="ngModel"
-    />
-  </div>
-
-  <textarea
-    name="journalEntry"
-    id="journalEntry"
-    placeholder="Start your entry today"
-    rows="9"
-    class="border-2 w-full focus:outline-none"
-    #journalEntry="ngModel"
-    ngModel
-    required
-    minlength="3"
-  ></textarea>
-  <ng-container *ngIf="journalEntry.touched">
-    <p class="text-red-500" *ngIf="journalEntry.errors?.['required']">
-      Text is required
-    </p>
-    <p class="text-red-500" *ngIf="journalEntry.errors?.['minlength']">
-      Your journal entry should be at least three characters long
-    </p>
-  </ng-container>
-
-  <div class="flex gap-4 self-end">
-    <button
-      class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
-      [disabled]="form.invalid"
-      [ngClass]="{
-        'bg-slate-400 border-slate-500 cursor-not-allowed': form.invalid
-      }"
-    >
-      Create
-    </button>
-    <button
-      class="border-2 bg-dark-green border-darker-green text-white rounded-full px-8 py-2 place-self-center"
-      (click)="backHandler($event)"
-    >
-      Cancel
-    </button>
-  </div>
-</form>
+    <div class="flex gap-4 self-end px-2">
+      <button
+        class="border-2 bg-dark-green border-darker-green text-white rounded-lg px-8 py-2 place-self-center"
+        [disabled]="form.invalid"
+        [ngClass]="{
+          'bg-slate-400 border-slate-500 cursor-not-allowed': form.invalid
+        }"
+      >
+        Create
+      </button>
+      <button
+        class="border-2 bg-orange-400 border-orange-500 text-white rounded-lg px-8 py-2 place-self-center"
+        (click)="backHandler($event)"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</section>

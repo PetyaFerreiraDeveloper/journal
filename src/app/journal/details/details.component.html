@@ -1,15 +1,15 @@
 <section
-  class="border-2 rounded-2xl flex flex-col gap-y-3 p-5 bg-white"
+  class="border-2 rounded-2xl flex flex-col gap-y-3 p-5 md:w-2/3 mx-auto"
   *ngIf="!showDeleteModal"
 >
-  <h1 class="text-center">Journal Entry Details</h1>
+  <h1 class="text-center text-xl">Journal Entry Details</h1>
 
   <app-entry-details [currentEntry]="currentEntry" />
   <div
-    class="flex flex-col gap-y-3 md:flex-row md:justify-between md:items-center md:px-5 gap-x-1"
+    class="flex flex-col gap-y-3 md:flex-row md:justify-between md:items-center gap-x-1"
   >
     <button
-      class="rounded-full border-2 border-darker-green bg-dark-green px-8 py-2 self-start text-white"
+      class="rounded-lg border-2 border-orange-500 bg-orange-400 px-8 py-2 self-start text-white"
       (click)="backHandler()"
     >
       Back
