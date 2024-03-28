@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "concurrently \"npm run start:app\" \"npm run start:server\"",
     "start:app": "ng serve",
-    "start:server": "cd api && npm start",
+    "start:server": "cd softuni-practice-server && node index.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
