@@ -11,5 +11,7 @@ export class MobileNavComponent {
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
-
+  get email(): string {
+    return this.userService.user?.email || '';
+  }
 }
