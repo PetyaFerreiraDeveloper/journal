@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from './loader/loader.component';
 import { EntryLabelComponent } from './entry-label/entry-label.component';
-import { NoEntriesComponent } from './no-entries/no-entries.component';
 import { EmailDirective } from './validators/email.directive';
 import { SlicePipe } from './pipes/slice.pipe';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
@@ -11,7 +10,6 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
   declarations: [
     LoaderComponent,
     EntryLabelComponent,
-    NoEntriesComponent,
     EmailDirective,
     SlicePipe,
     ConfirmModalComponent,
@@ -20,7 +18,6 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
   exports: [
     LoaderComponent,
     EntryLabelComponent,
-    NoEntriesComponent,
     EmailDirective,
     SlicePipe,
     ConfirmModalComponent,
