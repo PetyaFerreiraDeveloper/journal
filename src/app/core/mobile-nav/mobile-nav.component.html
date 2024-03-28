@@ -1,7 +1,8 @@
 <nav
   class="lg:hidden flex flex-col items-start gap-4 fixed top:16 lg:top-20 right-0 z-10 text-white bg-slate-800 w-60 p-5 rounded-bl-lg"
 >
- 
+  <p class="w-full pb-2 text-center border-b-[1px] border-gray-700" *ngIf="isLogged">{{ email }}</p>
+
   <a
     routerLink="/"
     routerLinkActive="active"
@@ -30,7 +31,10 @@
     >About us</a
   >
 
-  <div class="flex w-full justify-between border-t-[1px] border-gray-600 pt-4" *ngIf="!isLogged">
+  <div
+    class="flex w-full justify-between border-t-[1px] border-gray-600 pt-4"
+    *ngIf="!isLogged"
+  >
     <a
       routerLink="/auth/login"
       routerLinkActive="active"
@@ -46,14 +50,12 @@
       >Register</a
     >
   </div>
-  <div class="flex items-center gap-4" *ngIf="isLogged">
-    <p>Hello {{ email }}</p>
-    <a
-      routerLink="/auth/logout"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="p-2 rounded-lg"
-      >Logout</a
-    >
-  </div>
+  <a
+    routerLink="/auth/logout"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="p-2 rounded-lg"
+    *ngIf="isLogged"
+    >Logout</a
+  >
 </nav>
