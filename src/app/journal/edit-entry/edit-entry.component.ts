@@ -13,11 +13,6 @@ import { ActivatedRoute } from '@angular/router';
 export class EditEntryComponent implements OnInit {
   currentEntry: JournalEntry = {} as JournalEntry;
 
-  entryDetails: { title: string; category: string } = {
-    title: 'new title',
-    category: 'fun functions',
-  };
-
   form!: FormGroup;
 
   constructor(
@@ -60,6 +55,11 @@ export class EditEntryComponent implements OnInit {
 
   saveEntryHandler(): void {
     if (this.form.invalid) return;
+
+    if (this.form.value.authorName === null) {
+      this.form.value.authorName = '';
+    }
+
     this.journalService
       .edit$(this.currentEntry._id, this.form.value)
       .subscribe();
