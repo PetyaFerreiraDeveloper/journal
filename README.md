@@ -2,14 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
 
-I am using [Softuni practise server](https://github.com/softuni-practice-server/softuni-practice-server) as a backend and it is in the folder softuni-practice-service on root level of the project.
+I am using [Softuni practise server](https://github.com/softuni-practice-server/softuni-practice-server) as a backend. Please download it from the github repo and run it before starting the frontend app.
 
 ## Running the project for the first time:
 
 1. Clone the repository from github.
 2. Run `npm i` to install the libraries and get access to node_modules folder for the front end
-3. Open the softuni-practice-service folder and run `npm i` there to install the libraries for the server.
-3. Navigate back to the root folder called journal and run `npm run start` to start the project. This command will start both the server and the angular frontend app.
+3. Make sure the backend server is up and running.
+3. Run `ng serve` to start the project.
 
 ## Users access
 
