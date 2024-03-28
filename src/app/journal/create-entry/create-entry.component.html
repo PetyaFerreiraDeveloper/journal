@@ -7,7 +7,7 @@
     (ngSubmit)="addEntry(form)"
   >
     <div class="flex gap-x-3 border-b-2 px-2">
-      <label htmlFor="title">Title:</label>
+      <label for="title">Title:</label>
       <input
         type="text"
         id="title"
@@ -29,7 +29,7 @@
       </p>
     </ng-container>
     <div class="flex gap-x-3 border-b-2 px-2">
-      <label htmlFor="category">Category:</label>
+      <label for="category">Category:</label>
       <input
         type="text"
         id="category"
@@ -41,7 +41,7 @@
       />
     </div>
     <div class="flex gap-x-3 border-b-2 px-2">
-      <label htmlFor="blog">Share this record on the Blog: </label>
+      <label for="blog">Share this record on the Blog: </label>
       <input
         type="checkbox"
         name="blog"
@@ -54,7 +54,7 @@
     </div>
 
     <div class="flex gap-x-3 border-b-2 px-2" *ngIf="blogChecked">
-      <label htmlFor="authorName">Author Name: </label>
+      <label for="authorName">Author Name: </label>
       <input
         type="text"
         id="authorName"
