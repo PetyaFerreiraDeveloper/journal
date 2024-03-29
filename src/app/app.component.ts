@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +9,11 @@ export class AppComponent {
   title = 'journal';
   mobileNav = false;
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
   toggleMobileNav(): void {
     this.mobileNav = !this.mobileNav;
+    this.cdr.detectChanges();
   }
 
   @HostListener('document:click', ['$event'])
@@ -20,10 +23,7 @@ export class AppComponent {
       !targetElement.closest('app-mobile-nav') &&
       !targetElement.closest('header')
     ) {
-      console.log('click');
-      console.log('Mobile Nav Status:', this.mobileNav);
       this.mobileNav = false;
-      console.log('Mobile Nav Status After Closing:', this.mobileNav);
     }
   }
 }

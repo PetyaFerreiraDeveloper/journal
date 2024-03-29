@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { UserService } from '../../services/user.service';
 })
 export class HeaderComponent {
   mobileNav = false;
+  @Output() toggleMobileNavEvent: EventEmitter<void> = new EventEmitter<void>();
+
   constructor(public userService: UserService) {}
 
   get isLogged(): boolean {
@@ -18,7 +20,7 @@ export class HeaderComponent {
     return this.userService.user?.email || '';
   }
 
-  toggleMobileNav():void {
-    this.mobileNav = !this.mobileNav;
+  toggleMobileNav(): void {
+    this.toggleMobileNavEvent.emit();
   }
 }

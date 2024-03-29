@@ -74,7 +74,11 @@
       >Logout</a
     >
   </div>
-  <button class="lg:hidden align-middle" (click)="toggleMobileNav()" *ngIf="!mobileNav">
+  <button
+    class="lg:hidden align-middle p-4"
+    (click)="toggleMobileNav()"
+    *ngIf="!mobileNav"
+  >
     <svg
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +88,11 @@
       <path d="M0 0h24.48v2H0zM0 7.47h24.48v2H0zM0 14.54h24.48v2H0z" />
     </svg>
   </button>
-  <button *ngIf="mobileNav" class="lg:hidden align-middle" (click)="toggleMobileNav()">
+  <button
+    *ngIf="mobileNav"
+    class="lg:hidden align-middle p-4"
+    (click)="toggleMobileNav()"
+  >
     <svg
       class="w-6 h-6 fill-white font-semibold"
       xmlns="http://www.w3.org/2000/svg"
@@ -96,4 +104,3 @@
     </svg>
   </button>
 </header>
-<app-mobile-nav *ngIf="mobileNav" (linkClicked)="toggleMobileNav()"/>

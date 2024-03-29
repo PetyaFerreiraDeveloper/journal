@@ -1,7 +1,9 @@
 <app-authenticate
   class="flex flex-col min-h-screen relative bg-red-100 font-main"
 >
-  <app-header />
+  <app-header (toggleMobileNavEvent)="toggleMobileNav()"/>
+  <app-mobile-nav *ngIf="mobileNav" (linkClicked)="toggleMobileNav()" />
+
   <router-outlet />
 
   <div

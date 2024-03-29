@@ -8,7 +8,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class MobileNavComponent {
   @Output() linkClicked: EventEmitter<void> = new EventEmitter<void>();
+  
   constructor(private userService: UserService) {}
+
   get isLogged(): boolean {
     return this.userService.isLogged;
   }

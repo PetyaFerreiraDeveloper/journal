@@ -11,9 +11,17 @@ import { AboutComponent } from './about/about.component';
 import { FormsModule } from '@angular/forms';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MobileNavComponent } from './mobile-nav/mobile-nav.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent, AuthenticateComponent, NotFoundComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AboutComponent,
+    AuthenticateComponent,
+    NotFoundComponent,
+    MobileNavComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -21,7 +29,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SharedModule,
     JournalModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
