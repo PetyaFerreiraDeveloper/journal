@@ -96,4 +96,4 @@
     </svg>
   </button>
 </header>
-<app-mobile-nav *ngIf="mobileNav" />
+<app-mobile-nav *ngIf="mobileNav" (linkClicked)="toggleMobileNav()"/>

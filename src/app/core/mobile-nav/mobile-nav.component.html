@@ -1,16 +1,26 @@
 <nav
   class="lg:hidden flex flex-col items-start gap-4 fixed top:16 lg:top-20 right-0 z-10 text-white bg-slate-800 w-60 p-5 rounded-bl-lg"
 >
-  <p class="w-full pb-2 text-center border-b-[1px] border-gray-700" *ngIf="isLogged">{{ email }}</p>
+  <p
+    class="w-full pb-2 text-center border-b-[1px] border-gray-700"
+    *ngIf="isLogged"
+  >
+    {{ email }}
+  </p>
 
   <a
     routerLink="/"
     routerLinkActive="active"
     class="p-2 rounded-lg"
     [routerLinkActiveOptions]="{ exact: true }"
+    (click)="onLinkClick()"
     >Home</a
   >
-  <a routerLink="/blog" routerLinkActive="active" class="p-2 rounded-lg"
+  <a
+    routerLink="/blog"
+    routerLinkActive="active"
+    class="p-2 rounded-lg"
+    (click)="onLinkClick()"
     >Blog</a
   >
   <a
@@ -18,6 +28,7 @@
     routerLinkActive="active"
     *ngIf="isLogged"
     class="p-2 rounded-lg"
+    (click)="onLinkClick()"
     >My Journal</a
   >
   <a
@@ -25,9 +36,14 @@
     routerLinkActive="active"
     *ngIf="isLogged"
     class="p-2 rounded-lg"
+    (click)="onLinkClick()"
     >Create</a
   >
-  <a routerLink="/about-us" routerLinkActive="active" class="p-2 rounded-lg"
+  <a
+    routerLink="/about-us"
+    routerLinkActive="active"
+    class="p-2 rounded-lg"
+    (click)="onLinkClick()"
     >About us</a
   >
 
@@ -40,6 +56,7 @@
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
       class="p-2 rounded-lg"
+      (click)="onLinkClick()"
       >Login</a
     >
     <a
@@ -47,6 +64,7 @@
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
       class="p-2 rounded-lg"
+      (click)="onLinkClick()"
       >Register</a
     >
   </div>
@@ -56,6 +74,7 @@
     [routerLinkActiveOptions]="{ exact: true }"
     class="p-2 rounded-lg"
     *ngIf="isLogged"
+    (click)="onLinkClick()"
     >Logout</a
   >
 </nav>
